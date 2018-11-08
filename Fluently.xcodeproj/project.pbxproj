@@ -14,6 +14,8 @@
 		5584D6A92193FF7C005150EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A72193FF7C005150EC /* LaunchScreen.storyboard */; };
 		5584D6B12194009B005150EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B02194009B005150EC /* Constants.swift */; };
 		5584D6B5219401DD005150EC /* WordListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B4219401DD005150EC /* WordListener.swift */; };
+		5584D6B8219445FF005150EC /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6B7219445FF005150EC /* words.txt */; };
+		5584D6BA21944675005150EC /* WordFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B921944675005150EC /* WordFetcher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		5584D6AA2193FF7C005150EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5584D6B02194009B005150EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5584D6B4219401DD005150EC /* WordListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListener.swift; sourceTree = "<group>"; };
+		5584D6B7219445FF005150EC /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
+		5584D6B921944675005150EC /* WordFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFetcher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
 				5584D6A02193FF7B005150EC /* MainVC.swift */,
 				5584D6B4219401DD005150EC /* WordListener.swift */,
+				5584D6B6219445F0005150EC /* Resources */,
 				5584D6B3219400E8005150EC /* Utilities */,
 			);
 			path = Fluently;
@@ -77,6 +82,15 @@
 			);
 			name = Utilities;
 			path = Utilitiesasd;
+			sourceTree = "<group>";
+		};
+		5584D6B6219445F0005150EC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5584D6B921944675005150EC /* WordFetcher.swift */,
+				5584D6B7219445FF005150EC /* words.txt */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +153,7 @@
 			files = (
 				5584D6A92193FF7C005150EC /* LaunchScreen.storyboard in Resources */,
 				5584D6A62193FF7C005150EC /* Assets.xcassets in Resources */,
+				5584D6B8219445FF005150EC /* words.txt in Resources */,
 				5584D6A42193FF7B005150EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
 				5584D6A12193FF7B005150EC /* MainVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,

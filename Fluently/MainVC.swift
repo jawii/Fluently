@@ -10,29 +10,33 @@ import UIKit
 
 class MainVC: UIViewController {
     
-    var listener: WordListener!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var wordsToSayLabel: UILabel!
     
+    var listener: WordListener!
     var wordsHeared = [String]()
+    var words = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let wordfetcher = WordFetcher()
+        words = wordfetcher.readWords()
+        print("Words: count", words.count)
+        
         listener = WordListener(locale: Locale(identifier: "en-US"))
         listener.delegate = self
     }
+    
     @IBAction func recordButtonPressHandler(_ sender: UIButton) {
         listener.start()
     }
 }
 
 extension MainVC: WordListenerDelegate {
-    func wordsHeared(bestResult: String, others: [String]) {
-        let lastword = bestResult.components(separatedBy: " ").last!
-        if wordsHeared.last != lastword {
-            print("Heared: \(lastword)")
-            if !others.isEmpty {
-                print("Others: \(others)")
-            }
-            wordsHeared.append(lastword)
+    func wordsHeared(word: String) {
+        if wordsHeared.last != word {
+            print("Heared: \(word)")
+            wordsHeared.append(word)
         }
     }
 }

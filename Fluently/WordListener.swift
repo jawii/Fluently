@@ -10,7 +10,7 @@ import Foundation
 import Speech
 
 protocol WordListenerDelegate :class {
-    func wordsHeared(bestResult: String, others: [String])
+    func wordsHeared(word: String)
 }
 
 class WordListener: NSObject, SFSpeechRecognizerDelegate {
@@ -103,24 +103,21 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
             
             var isFinal = false
             
-            var bestTranscription: String = ""
-            var others = [String]()
-            
             if result != nil {
-                bestTranscription = result!.bestTranscription.formattedString
-//                let segement = result!.bestTranscription.segments
-                others = result!.transcriptions.map { $0.formattedString }.filter { $0 != bestTranscription}
+                if let lastSegment = result!.bestTranscription.segments.last?.substring {
+                    self.delegate?.wordsHeared(word: lastSegment)
+                }
                 isFinal = (result?.isFinal)!
-                self.delegate?.wordsHeared(bestResult: bestTranscription, others: others)
             }
             
             if error != nil || isFinal {
                 
+                print("End recording")
+                
                 if let error = error {
                     print(error.localizedDescription)
                 }
-                print("Is final: \(isFinal)")
-                print(bestTranscription)
+                
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
                 self.recognitionRequest = nil
@@ -132,7 +129,6 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
             self.recognitionRequest?.append(buffer)
         }
-        
         audioEngine.prepare()
         
         do {

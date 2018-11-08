@@ -13,7 +13,7 @@ protocol WordListenerDelegate :class {
     func wordsHeared(bestResult: String, others: [String])
 }
 
-class WordListener {
+class WordListener: NSObject, SFSpeechRecognizerDelegate {
     
     private var locale: Locale
     private let speechRegonizer: SFSpeechRecognizer
@@ -28,8 +28,15 @@ class WordListener {
     init(locale: Locale) {
         self.locale = locale
         self.speechRegonizer = SFSpeechRecognizer(locale: locale)!
+        super.init()
+        self.speechRegonizer.delegate = self
         requestAuthorization()
     }
+    
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+        print("Availability changed: \(available)")
+    }
+    
     
     private func requestAuthorization () {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in
@@ -76,7 +83,6 @@ class WordListener {
             try audioSession.setCategory(audioSessionCategory, mode: audioSessionMode, options: audioSessionOptions)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
-            
         } catch {
             print("AudioSession properties weren't set because of and error.")
         }
@@ -90,23 +96,33 @@ class WordListener {
         }
         
         recognitionRequest.shouldReportPartialResults = true
+        recognitionRequest.taskHint = .dictation
+//        recognitionRequest.contextualStrings = ["cat"]
         
         recognitionTask = speechRegonizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
             var isFinal = false
             
+            var bestTranscription: String = ""
+            var others = [String]()
+            
             if result != nil {
-                
-                if let bestTranscription = result?.bestTranscription.formattedString {
-                    let others = result!.transcriptions.map { $0.formattedString }.filter { $0 != bestTranscription}
-                    self.delegate?.wordsHeared(bestResult: bestTranscription, others: others)
-                    self.stop()
-                }
+                bestTranscription = result!.bestTranscription.formattedString
+//                let segement = result!.bestTranscription.segments
+                others = result!.transcriptions.map { $0.formattedString }.filter { $0 != bestTranscription}
                 isFinal = (result?.isFinal)!
+                self.delegate?.wordsHeared(bestResult: bestTranscription, others: others)
             }
+            
             if error != nil || isFinal {
+                
+                if let error = error {
+                    print(error.localizedDescription)
+                }
+                print("Is final: \(isFinal)")
+                print(bestTranscription)
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
-                
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
             }

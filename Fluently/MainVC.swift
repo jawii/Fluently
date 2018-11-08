@@ -12,6 +12,8 @@ class MainVC: UIViewController {
     
     var listener: WordListener!
     
+    var wordsHeared = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         listener = WordListener(locale: Locale(identifier: "en-US"))
@@ -24,10 +26,14 @@ class MainVC: UIViewController {
 
 extension MainVC: WordListenerDelegate {
     func wordsHeared(bestResult: String, others: [String]) {
-        print("Best: \(bestResult)")
-        print("Others: \(others)")
+        let lastword = bestResult.components(separatedBy: " ").last!
+        if wordsHeared.last != lastword {
+            print("Heared: \(lastword)")
+            if !others.isEmpty {
+                print("Others: \(others)")
+            }
+            wordsHeared.append(lastword)
+        }
     }
-    
-    
 }
 

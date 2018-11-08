@@ -10,7 +10,7 @@ import Foundation
 import Speech
 
 protocol WordListenerDelegate :class {
-    func wordsHeared(words: String)
+    func wordsHeared(bestResult: String, others: [String])
 }
 
 class WordListener {
@@ -18,18 +18,45 @@ class WordListener {
     private var locale: Locale
     private let speechRegonizer: SFSpeechRecognizer
     
-    init(locale: Locale) {
-        self.locale = locale
-        self.speechRegonizer = SFSpeechRecognizer(locale: locale)!
-    }
-    
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     
-    
-    //OUTPUT
     weak var delegate: WordListenerDelegate?
+    var isAuthorized: Bool = false
+    
+    init(locale: Locale) {
+        self.locale = locale
+        self.speechRegonizer = SFSpeechRecognizer(locale: locale)!
+        requestAuthorization()
+    }
+    
+    private func requestAuthorization () {
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in
+            
+            var isEnabled = false
+            switch authStatus {  //5
+            case .authorized:
+                isEnabled = true
+                
+            case .denied:
+                isEnabled = false
+                print("User denied access to speech recognition")
+                
+            case .restricted:
+                isEnabled = false
+                print("Speech recognition restricted on this device")
+                
+            case .notDetermined:
+                isEnabled = false
+                print("Speech recognition not yet authorized")
+            }
+            
+            OperationQueue.main.addOperation() {
+                self.isAuthorized = isEnabled
+            }
+        }
+    }
     
     func startRecording() {
         
@@ -42,7 +69,6 @@ class WordListener {
         // Create session to prepare for the audio recording
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            
             let audioSessionCategory = AVAudioSession.Category.record
             let audioSessionMode = AVAudioSession.Mode.spokenAudio
             let audioSessionOptions = AVAudioSession.CategoryOptions.defaultToSpeaker
@@ -69,18 +95,14 @@ class WordListener {
             var isFinal = false
             
             if result != nil {
-                let resultText = result?.bestTranscription.formattedString.lowercased()
-                print(resultText ?? "ERROR: No Result Text")
                 
-                if let resultText = resultText {
-                    self.delegate.wordsHeared(words: resultText)
-                } else {
-                    print("Error")
+                if let bestTranscription = result?.bestTranscription.formattedString {
+                    let others = result!.transcriptions.map { $0.formattedString }.filter { $0 != bestTranscription}
+                    self.delegate?.wordsHeared(bestResult: bestTranscription, others: others)
+                    self.stop()
                 }
-                
                 isFinal = (result?.isFinal)!
             }
-            
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -103,5 +125,17 @@ class WordListener {
             print("AudioEngine could not start because of an error.")
         }
         
+    }
+    
+    func start() {
+        print("Start Record")
+        startRecording()
+    }
+    
+    func stop() {
+        guard audioEngine.isRunning else { return }
+        print("Stop Record")
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
     }
 }

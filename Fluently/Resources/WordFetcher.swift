@@ -9,7 +9,7 @@
 import Foundation
 
 class WordFetcher {
-    private let file = "words"
+    private let file = "words2"
     let text = ""
     
     func readWords() -> [String] {

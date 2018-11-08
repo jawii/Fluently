@@ -27,15 +27,27 @@
                                     <action selector="recordButtonPressHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qoj-fj-paH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FLUENTLY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-4q-hkT">
-                                <rect key="frame" x="77" y="205" width="220" height="63"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtj-O2-1Zm">
+                                <rect key="frame" x="317" y="617" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="skip"/>
+                                <connections>
+                                    <action selector="skipWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zck-e0-QTP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLUENTLY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-4q-hkT">
+                                <rect key="frame" x="20" y="170" width="335" height="63"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="46"/>
                                 <color key="textColor" name="Havelock Blue"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WSl-4q-hkT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8uf-VQ-gfv"/>
+                            <constraint firstItem="WSl-4q-hkT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="I1o-Tm-1wg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WSl-4q-hkT" secondAttribute="trailing" constant="20" id="eU0-xT-qff"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>

@@ -105,7 +105,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
             
             if result != nil {
                 if let lastSegment = result!.bestTranscription.segments.last?.substring {
-                    self.delegate?.wordsHeared(word: lastSegment)
+                    self.delegate?.wordsHeared(word: lastSegment.lowercased())
                 }
                 isFinal = (result?.isFinal)!
             }

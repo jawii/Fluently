@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MainVC: UIViewController {
     
@@ -16,19 +17,40 @@ class MainVC: UIViewController {
     var listener: WordListener!
     var wordsHeared = [String]()
     var words = [String]()
+    var currentWord: String = "" {
+        didSet {
+            wordsToSayLabel.text = currentWord
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let wordfetcher = WordFetcher()
-        words = wordfetcher.readWords()
+        words = wordfetcher.readWords().shuffled().filter { $0.count > 2 }
         print("Words: count", words.count)
+        
+        currentWord = words.removeFirst()
         
         listener = WordListener(locale: Locale(identifier: "en-US"))
         listener.delegate = self
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(sayWord))
+        wordsToSayLabel.isUserInteractionEnabled = true
+        wordsToSayLabel.addGestureRecognizer(tap)
+    }
+    @objc func sayWord() {
+        let utterance = AVSpeechUtterance(string: currentWord)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utterance)
     }
     
     @IBAction func recordButtonPressHandler(_ sender: UIButton) {
         listener.start()
+    }
+    
+    @IBAction func skipWord(_ sender: UIButton) {
+        currentWord = words.removeFirst()
     }
 }
 
@@ -37,6 +59,10 @@ extension MainVC: WordListenerDelegate {
         if wordsHeared.last != word {
             print("Heared: \(word)")
             wordsHeared.append(word)
+            
+            if word == currentWord {
+                currentWord = words.removeFirst()
+            }
         }
     }
 }

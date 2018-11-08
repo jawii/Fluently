@@ -12,6 +12,8 @@
 		5584D6A42193FF7B005150EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A22193FF7B005150EC /* Main.storyboard */; };
 		5584D6A62193FF7C005150EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A52193FF7C005150EC /* Assets.xcassets */; };
 		5584D6A92193FF7C005150EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A72193FF7C005150EC /* LaunchScreen.storyboard */; };
+		5584D6B12194009B005150EC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B02194009B005150EC /* Constants.swift */; };
+		5584D6B5219401DD005150EC /* WordListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B4219401DD005150EC /* WordListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		5584D6A52193FF7C005150EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584D6A82193FF7C005150EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5584D6AA2193FF7C005150EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5584D6B02194009B005150EC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		5584D6B4219401DD005150EC /* WordListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,13 +59,24 @@
 			isa = PBXGroup;
 			children = (
 				5584D69E2193FF7B005150EC /* AppDelegate.swift */,
-				5584D6A02193FF7B005150EC /* ViewController.swift */,
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
+				5584D6A02193FF7B005150EC /* ViewController.swift */,
+				5584D6B4219401DD005150EC /* WordListener.swift */,
+				5584D6B3219400E8005150EC /* Utilities */,
+			);
+			path = Fluently;
+			sourceTree = "<group>";
+		};
+		5584D6B3219400E8005150EC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
 				5584D6A52193FF7C005150EC /* Assets.xcassets */,
+				5584D6B02194009B005150EC /* Constants.swift */,
 				5584D6A72193FF7C005150EC /* LaunchScreen.storyboard */,
 				5584D6AA2193FF7C005150EC /* Info.plist */,
 			);
-			path = Fluently;
+			name = Utilities;
+			path = Utilitiesasd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,6 +152,8 @@
 			files = (
 				5584D6A12193FF7B005150EC /* ViewController.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
+				5584D6B12194009B005150EC /* Constants.swift in Sources */,
+				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

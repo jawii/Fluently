@@ -17,6 +17,9 @@
 		5584D6B8219445FF005150EC /* words.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6B7219445FF005150EC /* words.txt */; };
 		5584D6BA21944675005150EC /* WordFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6B921944675005150EC /* WordFetcher.swift */; };
 		5584D6BC21944B3C005150EC /* words2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6BB21944B3C005150EC /* words2.txt */; };
+		55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */; };
+		55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18352195DEB7003D2CCB /* String+Ext.swift */; };
+		55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		5584D6B7219445FF005150EC /* words.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		5584D6B921944675005150EC /* WordFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordFetcher.swift; sourceTree = "<group>"; };
 		5584D6BB21944B3C005150EC /* words2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words2.txt; sourceTree = "<group>"; };
+		55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
+		55BE18352195DEB7003D2CCB /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutString+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,7 @@
 				5584D6A02193FF7B005150EC /* MainVC.swift */,
 				5584D6B4219401DD005150EC /* WordListener.swift */,
 				5584D6B6219445F0005150EC /* Resources */,
+				55BE18322195DE99003D2CCB /* Extensions */,
 				5584D6B3219400E8005150EC /* Utilities */,
 			);
 			path = Fluently;
@@ -94,6 +101,16 @@
 				5584D6BB21944B3C005150EC /* words2.txt */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		55BE18322195DE99003D2CCB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */,
+				55BE18352195DEB7003D2CCB /* String+Ext.swift */,
+				55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +187,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
+				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
+				55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */,
+				55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */,
 				5584D6A12193FF7B005150EC /* MainVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,

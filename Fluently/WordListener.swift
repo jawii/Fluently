@@ -11,6 +11,8 @@ import Speech
 
 protocol WordListenerDelegate :class {
     func wordsHeared(word: String)
+    func recordinStarted()
+    func recordingEnded()
 }
 
 class WordListener: NSObject, SFSpeechRecognizerDelegate {
@@ -20,7 +22,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
     
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
-    private let audioEngine = AVAudioEngine()
+    let audioEngine = AVAudioEngine()
     
     weak var delegate: WordListenerDelegate?
     var isAuthorized: Bool = false
@@ -76,9 +78,9 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         // Create session to prepare for the audio recording
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            let audioSessionCategory = AVAudioSession.Category.record
+            let audioSessionCategory = AVAudioSession.Category.playAndRecord
             let audioSessionMode = AVAudioSession.Mode.spokenAudio
-            let audioSessionOptions = AVAudioSession.CategoryOptions.defaultToSpeaker
+            let audioSessionOptions = AVAudioSession.CategoryOptions.mixWithOthers
             
             try audioSession.setCategory(audioSessionCategory, mode: audioSessionMode, options: audioSessionOptions)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
@@ -97,23 +99,28 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         
         recognitionRequest.shouldReportPartialResults = true
         recognitionRequest.taskHint = .dictation
-//        recognitionRequest.contextualStrings = ["cat"]
+        recognitionRequest.contextualStrings = ["than"]
         
         recognitionTask = speechRegonizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
             var isFinal = false
             
             if result != nil {
-                if let lastSegment = result!.bestTranscription.segments.last?.substring {
-                    self.delegate?.wordsHeared(word: lastSegment.lowercased())
+//                if let lastSegment = result!.bestTranscription.segments.last?.substring {
+//                    self.delegate?.wordsHeared(word: lastSegment.lowercased())
+//                }
+                if let bestTranscription = result?.bestTranscription.formattedString {
+                    let words = bestTranscription.components(separatedBy: " ")
+                    if let lastWord = words.last {
+                        self.delegate?.wordsHeared(word: lastWord)
+                    }
                 }
                 isFinal = (result?.isFinal)!
             }
             
             if error != nil || isFinal {
-                
                 print("End recording")
-                
+                self.delegate?.recordingEnded()
                 if let error = error {
                     print(error.localizedDescription)
                 }
@@ -141,6 +148,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
     
     func start() {
         print("Start Record")
+        delegate?.recordinStarted()
         startRecording()
     }
     
@@ -149,5 +157,6 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         print("Stop Record")
         audioEngine.stop()
         recognitionRequest?.endAudio()
+        delegate?.recordingEnded()
     }
 }

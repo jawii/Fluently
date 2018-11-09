@@ -35,24 +35,21 @@
                                     <action selector="skipWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zck-e0-QTP"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FLUENTLY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WSl-4q-hkT">
-                                <rect key="frame" x="20" y="170" width="335" height="63"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="46"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="TEXT TO SAY" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="AxW-Me-HSJ">
+                                <rect key="frame" x="67" y="188" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="Havelock Blue"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="31"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="WSl-4q-hkT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8uf-VQ-gfv"/>
-                            <constraint firstItem="WSl-4q-hkT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="I1o-Tm-1wg"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WSl-4q-hkT" secondAttribute="trailing" constant="20" id="eU0-xT-qff"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="playButton" destination="98q-wt-IxW" id="4Wa-2t-nF9"/>
-                        <outlet property="wordsToSayLabel" destination="WSl-4q-hkT" id="z1c-eT-gc9"/>
+                        <outlet property="sentenceToSayTextView" destination="AxW-Me-HSJ" id="d22-8u-KjO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

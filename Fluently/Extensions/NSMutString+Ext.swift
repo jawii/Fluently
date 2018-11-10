@@ -12,7 +12,7 @@ extension NSMutableAttributedString {
     func highlight(_ words: [String], this color: UIColor) -> NSMutableAttributedString {
         let attributedString = self
         for word in words {
-            let ranges = self.string.getRanges(of: word)
+            let ranges = self.string.getRanges(of: word.lowercased())
             for range in ranges {
                 attributedString.addAttributes([NSAttributedString.Key.foregroundColor: color], range: range)
             }

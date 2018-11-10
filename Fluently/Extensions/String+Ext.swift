@@ -9,13 +9,14 @@
 import UIKit
 
 extension String {
+    
     func getRanges(of string: String) -> [NSRange] {
         var ranges:[NSRange] = []
-        if self.contains(string) {
+        if self.lowercased().contains(string.lowercased()) {
             let words = self.components(separatedBy: " ")
             var position:Int = 0
             for word in words {
-                if word.lowercased() == string.lowercased() {
+                if word.lowercased().contains(string.lowercased()) {
                     let startIndex = position
                     let endIndex = word.count
                     let range = NSMakeRange(startIndex, endIndex)
@@ -38,8 +39,7 @@ extension String {
     }
     
     var stripped: String {
-        let okayChars = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ")
-        return self.filter {okayChars.contains($0) }
+        return self.filter {GlobalConstants.ALLOWED_CHARACTERS.contains($0) }
     }
 
 }

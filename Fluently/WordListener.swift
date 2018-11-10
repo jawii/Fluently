@@ -39,6 +39,9 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         print("Availability changed: \(available)")
     }
     
+    func setContextualStrings(_ strings: [String]) {
+        recognitionRequest?.contextualStrings = strings
+    }
     
     private func requestAuthorization () {
         SFSpeechRecognizer.requestAuthorization { (authStatus) in

@@ -34,12 +34,14 @@ class MainVC: UIViewController {
     var currentSentence: String = "" {
         didSet {
             sentenceToSayTextView.text = currentSentence
+            if listener != nil {
+                self.listener.setContextualStrings(currentSentenceWords)
+            }
         }
     }
     var currentSentenceWords: [String] {
         let words = currentSentence.components(separatedBy: " ")
             .map { $0.lowercased().stripped }
-        print(words)
         return words
     }
     
@@ -93,13 +95,36 @@ class MainVC: UIViewController {
 extension MainVC: WordListenerDelegate {
     func wordsHeared(word: String) {
         if wordsHeared.last != word {
-            print("Heared: \(word)")
-            wordsHeared.append(word)
-            
-            // check if word is in sentence
-            
+            print("Heared: \(word.lowercased())")
+            wordsHeared.append(word.lowercased())
+            throwWord(word: word)
         }
     }
+    func throwWord(word: String) {
+        //throw the word
+        let xMax = self.view.frame.width + 100
+        let xMin = CGFloat(50)
+        let yMin = self.sentenceToSayTextView.frame.maxY
+        let yMax = self.playButton.frame.minY
+        
+        let x = CGFloat.random(in: xMin...xMax)
+        let y = CGFloat.random(in: yMin...yMax)
+        let label = UILabel()
+        label.frame = CGRect(x: x, y: y, width: 100, height: 50)
+        label.adjustsFontSizeToFitWidth = true
+        label.text = word
+        
+        self.view.addSubview(label)
+        UIView.animate(withDuration: 1.5, animations: {
+            label.alpha = 0
+        }) { (_) in
+            label.removeFromSuperview()
+        }
+        
+        
+    }
+    
+    
     func recordinStarted() {
         playButton.setImage(#imageLiteral(resourceName: "Recording"), for: .normal)
     }

@@ -15,6 +15,7 @@ class MainVC: UIViewController {
     @IBOutlet weak var sentenceToSayTextView: UITextView!
     
     var listener: WordListener!
+    /*
     var wordsHeared = [String]() {
         didSet {
             if let word = wordsHeared.last {
@@ -26,11 +27,8 @@ class MainVC: UIViewController {
             }
         }
     }
-    var sentences = [
-                "How are you doing today? HELP!",
-                "Nice to meet you",
-                "Hello, my name is Jack"
-            ]
+ 
+    
     var currentSentence: String = "" {
         didSet {
             sentenceToSayTextView.text = currentSentence
@@ -44,16 +42,29 @@ class MainVC: UIViewController {
             .map { $0.lowercased().stripped }
         return words
     }
+    */
+    
+    var sentences = [
+        Sentence(saying: "Moikka kaikille minun nimi on viivi. Tänään on isänpäivä. Nyt menen syömään. Moro"),
+        Sentence(saying: "How are you doing today? HELP!"),
+        Sentence(saying: "How are you doing today? HELP!"),
+        Sentence(saying: "My name is Jack. What is your name? How many old are you?"),
+        Sentence(saying: "How are you doing today? HELP!"),
+        Sentence(saying: "How are you doing today? HELP!")
+    ]
+    
+    var currentSentence: Sentence!
+    var wordsHeared = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let wordfetcher = WordFetcher()
-//        words = wordfetcher.readWords().shuffled().filter { $0.count > 2 }
-//        print("Words: count", words.count)
         
         currentSentence = sentences.removeFirst()
+        currentSentence.delegate = self
+        sentenceToSayTextView.attributedText = currentSentence.sentence
         
-        listener = WordListener(locale: Locale(identifier: "en-US"))
+//        listener = WordListener(locale: Locale(identifier: "en-US"))
+        listener = WordListener(locale: Locale.init(identifier: "fi_FI"))
         listener.delegate = self
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(wordTapped(_:)))
@@ -71,7 +82,8 @@ class MainVC: UIViewController {
     @objc func sayWord(word: String) {
         listener.stop()
         let utterance = AVSpeechUtterance(string: word)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        //"en-US"
+        utterance.voice = AVSpeechSynthesisVoice(language: "fi_FI")
 //        utterance.rate = 0.2
         let synth = AVSpeechSynthesizer()
         synth.delegate = self
@@ -92,11 +104,24 @@ class MainVC: UIViewController {
     }
 }
 
+extension MainVC: SentenceDelegate {
+    func setText(_ text: NSMutableAttributedString) {
+        self.sentenceToSayTextView.attributedText = text
+    }
+    
+    func setContextualStrings(to: [String]) {
+        if listener != nil {
+            listener.setContextualStrings(to)
+        }
+    }
+}
+
 extension MainVC: WordListenerDelegate {
     func wordsHeared(word: String) {
         if wordsHeared.last != word {
             print("Heared: \(word.lowercased())")
             wordsHeared.append(word.lowercased())
+            currentSentence.said(word: word)
             throwWord(word: word)
         }
     }
@@ -120,8 +145,6 @@ extension MainVC: WordListenerDelegate {
         }) { (_) in
             label.removeFromSuperview()
         }
-        
-        
     }
     
     

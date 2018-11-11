@@ -20,6 +20,7 @@
 		55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */; };
 		55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18352195DEB7003D2CCB /* String+Ext.swift */; };
 		55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */; };
+		55F743CC2198149200C965A4 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F743CB2198149200C965A4 /* Sentence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		55BE18352195DEB7003D2CCB /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutString+Ext.swift"; sourceTree = "<group>"; };
+		55F743CB2198149200C965A4 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
 				5584D6A02193FF7B005150EC /* MainVC.swift */,
 				5584D6B4219401DD005150EC /* WordListener.swift */,
+				55F743CA2198148200C965A4 /* Model */,
 				5584D6B6219445F0005150EC /* Resources */,
 				55BE18322195DE99003D2CCB /* Extensions */,
 				5584D6B3219400E8005150EC /* Utilities */,
@@ -111,6 +114,14 @@
 				55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		55F743CA2198148200C965A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55F743CB2198149200C965A4 /* Sentence.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
+				55F743CC2198149200C965A4 /* Sentence.swift in Sources */,
 				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
 				55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */,
 				55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */,

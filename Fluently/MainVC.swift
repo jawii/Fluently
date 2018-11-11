@@ -15,43 +15,15 @@ class MainVC: UIViewController {
     @IBOutlet weak var sentenceToSayTextView: UITextView!
     
     var listener: WordListener!
-    /*
-    var wordsHeared = [String]() {
-        didSet {
-            if let word = wordsHeared.last {
-                if currentSentenceWords.contains(word.lowercased()) {
-                    let attributedText = NSMutableAttributedString(attributedString: sentenceToSayTextView.attributedText)
-                    let newText = attributedText.highlight([word], this: UIColor.green)
-                    sentenceToSayTextView.attributedText = newText
-                }
-            }
-        }
-    }
- 
-    
-    var currentSentence: String = "" {
-        didSet {
-            sentenceToSayTextView.text = currentSentence
-            if listener != nil {
-                self.listener.setContextualStrings(currentSentenceWords)
-            }
-        }
-    }
-    var currentSentenceWords: [String] {
-        let words = currentSentence.components(separatedBy: " ")
-            .map { $0.lowercased().stripped }
-        return words
-    }
-    */
     
     var sentences = [
-        Sentence(saying: "Moikka kaikille minun nimi on viivi. Tänään on isänpäivä. Nyt menen syömään. Moro"),
         Sentence(saying: "How are you doing today? HELP!"),
         Sentence(saying: "How are you doing today? HELP!"),
         Sentence(saying: "My name is Jack. What is your name? How many old are you?"),
         Sentence(saying: "How are you doing today? HELP!"),
         Sentence(saying: "How are you doing today? HELP!")
     ]
+    
     
     var currentSentence: Sentence!
     var wordsHeared = [String]()
@@ -61,15 +33,26 @@ class MainVC: UIViewController {
         
         currentSentence = sentences.removeFirst()
         currentSentence.delegate = self
-        sentenceToSayTextView.attributedText = currentSentence.sentence
         
-//        listener = WordListener(locale: Locale(identifier: "en-US"))
-        listener = WordListener(locale: Locale.init(identifier: "fi_FI"))
+        listener = WordListener(locale: Locale(identifier: "en-US"))
         listener.delegate = self
         
+        // Add tap to word. Say the word when tapped
         let tap = UITapGestureRecognizer(target: self, action: #selector(wordTapped(_:)))
         sentenceToSayTextView.isUserInteractionEnabled = true
         sentenceToSayTextView.addGestureRecognizer(tap)
+        
+
+        let wordFetcher = WordFetcher()
+        wordFetcher.fetchWords { (quote, error) in
+            if let quote = quote {
+                DispatchQueue.main.async {
+                    self.currentSentence = Sentence(saying: quote.quote)
+                    self.sentenceToSayTextView.attributedText = self.currentSentence.sentence
+                }
+                
+            }
+        }
     }
     
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
@@ -82,8 +65,7 @@ class MainVC: UIViewController {
     @objc func sayWord(word: String) {
         listener.stop()
         let utterance = AVSpeechUtterance(string: word)
-        //"en-US"
-        utterance.voice = AVSpeechSynthesisVoice(language: "fi_FI")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
 //        utterance.rate = 0.2
         let synth = AVSpeechSynthesizer()
         synth.delegate = self

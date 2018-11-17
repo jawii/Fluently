@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507A826219FE9B200683BC0 /* RecordButtonView.swift */; };
 		5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D69E2193FF7B005150EC /* AppDelegate.swift */; };
 		5584D6A12193FF7B005150EC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6A02193FF7B005150EC /* MainVC.swift */; };
 		5584D6A42193FF7B005150EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A22193FF7B005150EC /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5507A826219FE9B200683BC0 /* RecordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButtonView.swift; sourceTree = "<group>"; };
 		5584D69B2193FF7B005150EC /* Fluently.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluently.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584D69E2193FF7B005150EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5584D6A02193FF7B005150EC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5507A825219FE98800683BC0 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				5507A826219FE9B200683BC0 /* RecordButtonView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		5584D6922193FF7B005150EC = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 				55F743CA2198148200C965A4 /* Model */,
 				5584D6B6219445F0005150EC /* Resources */,
 				55BE18322195DE99003D2CCB /* Extensions */,
+				5507A825219FE98800683BC0 /* CustomViews */,
 				5584D6B3219400E8005150EC /* Utilities */,
 			);
 			path = Fluently;
@@ -206,6 +217,7 @@
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
+				5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

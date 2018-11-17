@@ -8,7 +8,21 @@
 
 import UIKit
 
+enum FONTAvenirNextFamily: String {
+    case Regular = "AvenirNext-Regular"
+    
+    func font (size: CGFloat) -> UIFont? {
+        return UIFont(name: self.rawValue, size: size)
+    }
+    
+    func CTFont (size: CGFloat) -> CTFont {
+        return CTFontCreateWithName(self.rawValue as CFString, size, nil)
+    }
+}
+
 struct GlobalConstants {
+    
+    
     
     struct Color {
         static let havelockBlue = UIColor(named: "Havelock Blue")!

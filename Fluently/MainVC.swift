@@ -11,8 +11,8 @@ import AVFoundation
 
 class MainVC: UIViewController {
     
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var sentenceToSayTextView: UITextView!
+    @IBOutlet weak var recordButtonView: RecordButtonView!
     
     var listener: WordListener!
     
@@ -53,6 +53,9 @@ class MainVC: UIViewController {
                 
             }
         }
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(recordButtonPressHandler))
+        recordButtonView.isUserInteractionEnabled = true
+        recordButtonView.addGestureRecognizer(tap1)
     }
     
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
@@ -73,7 +76,7 @@ class MainVC: UIViewController {
         
     }
     
-    @IBAction func recordButtonPressHandler(_ sender: UIButton) {
+    @objc func recordButtonPressHandler() {
         if listener.audioEngine.isRunning {
             listener.stop()
         } else {
@@ -104,9 +107,10 @@ extension MainVC: WordListenerDelegate {
             print("Heared: \(word.lowercased())")
             wordsHeared.append(word.lowercased())
             currentSentence.said(word: word)
-            throwWord(word: word)
+            recordButtonView.shootWord(word: word)
         }
     }
+    /*
     func throwWord(word: String) {
         //throw the word
         let xMax = self.view.frame.width + 100
@@ -128,13 +132,14 @@ extension MainVC: WordListenerDelegate {
             label.removeFromSuperview()
         }
     }
+     */
     
     
     func recordinStarted() {
-        playButton.setImage(#imageLiteral(resourceName: "Recording"), for: .normal)
+        recordButtonView.recordingStarted()
     }
     func recordingEnded() {
-        playButton.setImage(#imageLiteral(resourceName: "Play Button"), for: .normal)
+        recordButtonView.recordingStopped()
     }
 }
 

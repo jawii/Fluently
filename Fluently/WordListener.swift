@@ -84,7 +84,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
             let audioSessionCategory = AVAudioSession.Category.playAndRecord
             let audioSessionMode = AVAudioSession.Mode.spokenAudio
             let audioSessionOptions = AVAudioSession.CategoryOptions.mixWithOthers
-            
+        
             try audioSession.setCategory(audioSessionCategory, mode: audioSessionMode, options: audioSessionOptions)
             try audioSession.setMode(AVAudioSession.Mode.measurement)
             try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
@@ -101,8 +101,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         }
         
         recognitionRequest.shouldReportPartialResults = true
-        recognitionRequest.taskHint = .dictation
-        recognitionRequest.contextualStrings = ["than"]
+        recognitionRequest.taskHint = .search
         
         recognitionTask = speechRegonizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
@@ -147,7 +146,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
             print("AudioEngine could not start because of an error.")
         }
         
-    }
+    } 
     
     func start() {
         print("Start Record")

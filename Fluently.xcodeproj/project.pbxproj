@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507A826219FE9B200683BC0 /* RecordButtonView.swift */; };
+		5511DB7821A13F230028F219 /* SentenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB7721A13F230028F219 /* SentenceService.swift */; };
+		5511DB8021A13FD50028F219 /* FluentlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB7F21A13FD50028F219 /* FluentlyTests.swift */; };
+		5511DB8B21A15BF60028F219 /* sentences.json in Resources */ = {isa = PBXBuildFile; fileRef = 5511DB8A21A15BF60028F219 /* sentences.json */; };
 		5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D69E2193FF7B005150EC /* AppDelegate.swift */; };
-		5584D6A12193FF7B005150EC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6A02193FF7B005150EC /* MainVC.swift */; };
+		5584D6A12193FF7B005150EC /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6A02193FF7B005150EC /* GameVC.swift */; };
 		5584D6A42193FF7B005150EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A22193FF7B005150EC /* Main.storyboard */; };
 		5584D6A62193FF7C005150EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A52193FF7C005150EC /* Assets.xcassets */; };
 		5584D6A92193FF7C005150EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A72193FF7C005150EC /* LaunchScreen.storyboard */; };
@@ -24,11 +27,26 @@
 		55F743CC2198149200C965A4 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F743CB2198149200C965A4 /* Sentence.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5511DB8221A13FD50028F219 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5584D6932193FF7B005150EC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5584D69A2193FF7B005150EC;
+			remoteInfo = Fluently;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		5507A826219FE9B200683BC0 /* RecordButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordButtonView.swift; sourceTree = "<group>"; };
+		5511DB7721A13F230028F219 /* SentenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceService.swift; sourceTree = "<group>"; };
+		5511DB7D21A13FD50028F219 /* FluentlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FluentlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5511DB7F21A13FD50028F219 /* FluentlyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluentlyTests.swift; sourceTree = "<group>"; };
+		5511DB8121A13FD50028F219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5511DB8A21A15BF60028F219 /* sentences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sentences.json; sourceTree = "<group>"; };
 		5584D69B2193FF7B005150EC /* Fluently.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluently.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584D69E2193FF7B005150EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5584D6A02193FF7B005150EC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5584D6A02193FF7B005150EC /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
 		5584D6A32193FF7B005150EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5584D6A52193FF7C005150EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5584D6A82193FF7C005150EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -45,6 +63,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5511DB7A21A13FD50028F219 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5584D6982193FF7B005150EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -63,10 +88,28 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		5511DB7E21A13FD50028F219 /* FluentlyTests */ = {
+			isa = PBXGroup;
+			children = (
+				5511DB7F21A13FD50028F219 /* FluentlyTests.swift */,
+				5511DB8121A13FD50028F219 /* Info.plist */,
+			);
+			path = FluentlyTests;
+			sourceTree = "<group>";
+		};
+		5511DB8721A140B60028F219 /* Sentences */ = {
+			isa = PBXGroup;
+			children = (
+				5511DB8A21A15BF60028F219 /* sentences.json */,
+			);
+			path = Sentences;
+			sourceTree = "<group>";
+		};
 		5584D6922193FF7B005150EC = {
 			isa = PBXGroup;
 			children = (
 				5584D69D2193FF7B005150EC /* Fluently */,
+				5511DB7E21A13FD50028F219 /* FluentlyTests */,
 				5584D69C2193FF7B005150EC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				5584D69B2193FF7B005150EC /* Fluently.app */,
+				5511DB7D21A13FD50028F219 /* FluentlyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,7 +129,7 @@
 				5584D69E2193FF7B005150EC /* AppDelegate.swift */,
 				5584D6AA2193FF7C005150EC /* Info.plist */,
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
-				5584D6A02193FF7B005150EC /* MainVC.swift */,
+				5584D6A02193FF7B005150EC /* GameVC.swift */,
 				5584D6B4219401DD005150EC /* WordListener.swift */,
 				55F743CA2198148200C965A4 /* Model */,
 				5584D6B6219445F0005150EC /* Resources */,
@@ -110,6 +154,7 @@
 		5584D6B6219445F0005150EC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5511DB8721A140B60028F219 /* Sentences */,
 				5584D6B921944675005150EC /* WordFetcher.swift */,
 				5584D6B7219445FF005150EC /* words.txt */,
 				5584D6BB21944B3C005150EC /* words2.txt */,
@@ -131,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				55F743CB2198149200C965A4 /* Sentence.swift */,
+				5511DB7721A13F230028F219 /* SentenceService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,6 +184,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5511DB7C21A13FD50028F219 /* FluentlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5511DB8421A13FD50028F219 /* Build configuration list for PBXNativeTarget "FluentlyTests" */;
+			buildPhases = (
+				5511DB7921A13FD50028F219 /* Sources */,
+				5511DB7A21A13FD50028F219 /* Frameworks */,
+				5511DB7B21A13FD50028F219 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5511DB8321A13FD50028F219 /* PBXTargetDependency */,
+			);
+			name = FluentlyTests;
+			productName = FluentlyTests;
+			productReference = 5511DB7D21A13FD50028F219 /* FluentlyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		5584D69A2193FF7B005150EC /* Fluently */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5584D6AD2193FF7C005150EC /* Build configuration list for PBXNativeTarget "Fluently" */;
@@ -165,6 +229,10 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Jaakko Kenttä";
 				TargetAttributes = {
+					5511DB7C21A13FD50028F219 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 5584D69A2193FF7B005150EC;
+					};
 					5584D69A2193FF7B005150EC = {
 						CreatedOnToolsVersion = 10.1;
 					};
@@ -184,11 +252,19 @@
 			projectRoot = "";
 			targets = (
 				5584D69A2193FF7B005150EC /* Fluently */,
+				5511DB7C21A13FD50028F219 /* FluentlyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5511DB7B21A13FD50028F219 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5584D6992193FF7B005150EC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -197,6 +273,7 @@
 				5584D6A62193FF7C005150EC /* Assets.xcassets in Resources */,
 				5584D6B8219445FF005150EC /* words.txt in Resources */,
 				5584D6A42193FF7B005150EC /* Main.storyboard in Resources */,
+				5511DB8B21A15BF60028F219 /* sentences.json in Resources */,
 				5584D6BC21944B3C005150EC /* words2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +281,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5511DB7921A13FD50028F219 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5511DB8021A13FD50028F219 /* FluentlyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5584D6972193FF7B005150EC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -213,15 +298,24 @@
 				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
 				55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */,
 				55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */,
-				5584D6A12193FF7B005150EC /* MainVC.swift in Sources */,
+				5584D6A12193FF7B005150EC /* GameVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
+				5511DB7821A13F230028F219 /* SentenceService.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
 				5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5511DB8321A13FD50028F219 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5584D69A2193FF7B005150EC /* Fluently */;
+			targetProxy = 5511DB8221A13FD50028F219 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		5584D6A22193FF7B005150EC /* Main.storyboard */ = {
@@ -243,6 +337,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5511DB8521A13FD50028F219 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H28M339QJB;
+				INFOPLIST_FILE = FluentlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaakkokenttar.amp-up---ArKit.FluentlyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fluently.app/Fluently";
+			};
+			name = Debug;
+		};
+		5511DB8621A13FD50028F219 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H28M339QJB;
+				INFOPLIST_FILE = FluentlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jaakkokenttar.amp-up---ArKit.FluentlyTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fluently.app/Fluently";
+			};
+			name = Release;
+		};
 		5584D6AB2193FF7C005150EC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -398,6 +532,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5511DB8421A13FD50028F219 /* Build configuration list for PBXNativeTarget "FluentlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5511DB8521A13FD50028F219 /* Debug */,
+				5511DB8621A13FD50028F219 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		5584D6962193FF7B005150EC /* Build configuration list for PBXProject "Fluently" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

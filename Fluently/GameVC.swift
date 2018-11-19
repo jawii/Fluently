@@ -10,32 +10,37 @@ import UIKit
 import AVFoundation
 
 
-class MainVC: UIViewController {
+class GameVC: UIViewController {
     
     @IBOutlet weak var sentenceToSayTextView: UITextView!
     @IBOutlet weak var recordButtonView: RecordButtonView!
+    @IBOutlet weak var saySentenceButton: UIButton!
+    @IBOutlet weak var skipSentenceButton: UIButton!
+    
     
     var listener: WordListener!
     
-    var sentences = [
-        Sentence(saying: "How are you doing today? HELP!"),
-        Sentence(saying: "How are you doing today? HELP!"),
-        Sentence(saying: "My name is Jack. What is your name? How many old are you?"),
-        Sentence(saying: "How are you doing today? HELP!"),
-        Sentence(saying: "How are you doing today? HELP!")
-    ]
-    
-    
-    var currentSentence: Sentence!
+    var sentences = [Sentence]()
+    var currentSentence: Sentence! {
+        didSet {
+            currentSentence.start()
+        }
+    }
     var wordsHeared = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let service = SentenceService()
+        sentences = service.fetchSententces(forLanguage: .englishUS, andForCategory: .smallTalk).shuffled()
+        
+        
         currentSentence = sentences.removeFirst()
         currentSentence.delegate = self
+        currentSentence.start()
         
-        listener = WordListener(locale: Locale(identifier: "en-US"))
+        
+        listener = WordListener(locale: Locale(identifier: "en_US"))
         listener.delegate = self
         
         // Add tap to word. Say the word when tapped
@@ -43,17 +48,6 @@ class MainVC: UIViewController {
         sentenceToSayTextView.isUserInteractionEnabled = true
         sentenceToSayTextView.addGestureRecognizer(tap)
         
-
-        let wordFetcher = WordFetcher()
-        wordFetcher.fetchWords { (quote, error) in
-            if let quote = quote {
-                DispatchQueue.main.async {
-                    self.currentSentence = Sentence(saying: quote.quote)
-                    self.sentenceToSayTextView.attributedText = self.currentSentence.sentence
-                }
-                
-            }
-        }
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(recordButtonPressHandler))
         recordButtonView.isUserInteractionEnabled = true
         recordButtonView.addGestureRecognizer(tap1)
@@ -87,10 +81,16 @@ class MainVC: UIViewController {
     
     @IBAction func skipWord(_ sender: UIButton) {
         currentSentence = sentences.removeFirst()
+        currentSentence.delegate = self
+        currentSentence.start()
+    }
+    
+    @IBAction func saySentenceButtonHandler(_ sender: Any) {
+        sayWord(word: currentSentence.initialSentence)
     }
 }
 
-extension MainVC: SentenceDelegate {
+extension GameVC: SentenceDelegate {
     func setText(_ text: NSMutableAttributedString) {
         self.sentenceToSayTextView.attributedText = text
     }
@@ -100,9 +100,12 @@ extension MainVC: SentenceDelegate {
             listener.setContextualStrings(strings)
         }
     }
+    func textSayingComplete() {
+        print("Word complete!")
+    }
 }
 
-extension MainVC: WordListenerDelegate {
+extension GameVC: WordListenerDelegate {
     func wordsHeared(word: String) {
         if wordsHeared.last != word {
             wordsHeared.append(word.lowercased())
@@ -119,13 +122,12 @@ extension MainVC: WordListenerDelegate {
     }
 }
 
-extension MainVC: AVSpeechSynthesizerDelegate {
+extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         listener.stop()
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         listener.start()
-        
     }
 }
 

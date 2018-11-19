@@ -46,3 +46,15 @@ class Quote: Codable {
     let author: String
     let cat: String
 }
+
+/*
+ let wordFetcher = WordFetcher()
+ wordFetcher.fetchWords { (quote, error) in
+ if let quote = quote {
+ DispatchQueue.main.async {
+ self.currentSentence = Sentence(saying: quote.quote, translation: nil)
+ self.sentenceToSayTextView.attributedText = self.currentSentence.sentence
+ }
+ }
+ }
+ */

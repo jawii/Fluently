@@ -11,9 +11,12 @@ import UIKit
 protocol SentenceDelegate: class {
     func setText(_ text: NSMutableAttributedString)
     func setContextualStrings(to :[String])
+    func textSayingComplete()
 }
 
 class Sentence {
+    let translation: String?
+    
     let initialSentence: String
     var sentence: NSMutableAttributedString {
         didSet {
@@ -21,11 +24,11 @@ class Sentence {
         }
     }
     var words: [String]
-    let saidWords = [String]()
     
     weak var delegate: SentenceDelegate?
+
     
-    init(saying: String) {
+    init(saying: String, translation: String?) {
         self.initialSentence = saying
         self.words = saying.components(separatedBy: " ").map { $0.lowercased().stripped }
         
@@ -37,13 +40,21 @@ class Sentence {
             NSAttributedString.Key.paragraphStyle : style
         ]
         self.sentence = NSMutableAttributedString(string: initialSentence, attributes: attributes)
+        
+        self.translation = translation
+    }
+    func start() {
+        delegate?.setText(sentence)
     }
     
     func said(word: String) {
         if words.contains(word.lowercased()) {
             sentence = sentence.highlight([word], this: UIColor.green)
+            words.filter { $0 != word.lowercased() }
         }
-        //check if sentence is said
+        if words.isEmpty {
+            delegate?.textSayingComplete()
+        }
     }
     
 }

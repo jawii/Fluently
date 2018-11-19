@@ -25,6 +25,9 @@ class SentenceSaying: XCTestCase {
         sentence.said(word: "Im")
         sentence.said(word: "Jaakko")
         XCTAssert(sentence.words.count == 0)
+        
+        // Get all sentences
+        
     }
     
     func testSentenceAmount() {

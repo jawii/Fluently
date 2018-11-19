@@ -26,13 +26,18 @@ class GameVC: UIViewController {
             currentSentence.start()
         }
     }
+    // Keeps track of said words
     var wordsHeared = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        saySentenceButton.alignImageAndTitleVertically()
+//        skipSentenceButton.alignImageAndTitleVertically()
+        
         let service = SentenceService()
-        sentences = service.fetchSentences(forLanguage: .englishUS, andForCategory: .smallTalk).shuffled()
+        let learningLang = LanguageService.shared.learningLanguage
+        sentences = service.fetchSentences(forLanguage: learningLang, andForCategory: .smallTalk).shuffled()
         
         
         currentSentence = sentences.removeFirst()
@@ -40,7 +45,8 @@ class GameVC: UIViewController {
         currentSentence.start()
         
         
-        listener = WordListener(locale: Locale(identifier: "en_US"))
+        
+        listener = WordListener(locale: Locale(identifier: learningLang.rawValue))
         listener.delegate = self
         
         // Add tap to word. Say the word when tapped
@@ -63,8 +69,8 @@ class GameVC: UIViewController {
     @objc func sayWord(word: String) {
         listener.stop()
         let utterance = AVSpeechUtterance(string: word)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-//        utterance.rate = 0.2
+        utterance.voice = AVSpeechSynthesisVoice(language: LanguageService.shared.learningLanguage.rawValue)
+        utterance.rate = 0.8
         let synth = AVSpeechSynthesizer()
         synth.delegate = self
         synth.speak(utterance)
@@ -124,9 +130,15 @@ extension GameVC: WordListenerDelegate {
 
 extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        print("Synthesizer started")
+        recordButtonView.isUserInteractionEnabled = false
+        saySentenceButton.tintColor = UIColor.black
         listener.stop()
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        print("Synthesizer stopped")
+        recordButtonView.isUserInteractionEnabled = true
+        saySentenceButton.tintColor = UIColor.blue
         listener.start()
     }
 }

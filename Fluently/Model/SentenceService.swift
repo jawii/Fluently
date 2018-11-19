@@ -8,15 +8,6 @@
 
 import Foundation
 
-#warning("Test that all locales exists")
-enum LearningLanguage: String, CaseIterable {
-    case finnish = "fi_FI"
-    case englishUK = "en_UK"
-    case englishUS = "en_US"
-    case swedish = "sv_SE"
-    case german = "de"
-}
-
 enum SentenceCategory: String, CaseIterable {
     case smallTalk = "smallTalk"
     case jobInterview = "jobInterview"

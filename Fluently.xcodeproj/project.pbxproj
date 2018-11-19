@@ -12,6 +12,8 @@
 		5511DB8021A13FD50028F219 /* FluentlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB7F21A13FD50028F219 /* FluentlyTests.swift */; };
 		5511DB8B21A15BF60028F219 /* sentences.json in Resources */ = {isa = PBXBuildFile; fileRef = 5511DB8A21A15BF60028F219 /* sentences.json */; };
 		5511DB8D21A263220028F219 /* SentenceSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8C21A263220028F219 /* SentenceSaying.swift */; };
+		5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8E21A272110028F219 /* UIButton+Ext.swift */; };
+		5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB9021A2FD3B0028F219 /* LanguageService.swift */; };
 		5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D69E2193FF7B005150EC /* AppDelegate.swift */; };
 		5584D6A12193FF7B005150EC /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6A02193FF7B005150EC /* GameVC.swift */; };
 		5584D6A42193FF7B005150EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A22193FF7B005150EC /* Main.storyboard */; };
@@ -46,6 +48,8 @@
 		5511DB8121A13FD50028F219 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5511DB8A21A15BF60028F219 /* sentences.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sentences.json; sourceTree = "<group>"; };
 		5511DB8C21A263220028F219 /* SentenceSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceSaying.swift; sourceTree = "<group>"; };
+		5511DB8E21A272110028F219 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		5511DB9021A2FD3B0028F219 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		5584D69B2193FF7B005150EC /* Fluently.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluently.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584D69E2193FF7B005150EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5584D6A02193FF7B005150EC /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 				55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */,
 				55BE18352195DEB7003D2CCB /* String+Ext.swift */,
 				55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */,
+				5511DB8E21A272110028F219 /* UIButton+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 			children = (
 				55F743CB2198149200C965A4 /* Sentence.swift */,
 				5511DB7721A13F230028F219 /* SentenceService.swift */,
+				5511DB9021A2FD3B0028F219 /* LanguageService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,9 +311,11 @@
 				5584D6A12193FF7B005150EC /* GameVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
+				5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */,
 				5511DB7821A13F230028F219 /* SentenceService.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
 				5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */,
+				5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

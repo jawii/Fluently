@@ -18,9 +18,9 @@ class Sentence {
     let translation: String?
     
     let initialSentence: String
-    var sentence: NSMutableAttributedString {
+    var sentenceAttrString: NSMutableAttributedString {
         didSet {
-            delegate?.setText(sentence)
+            delegate?.setText(sentenceAttrString)
         }
     }
     var words: [String]
@@ -41,31 +41,36 @@ class Sentence {
             NSAttributedString.Key.font : UIFont(name: "AvenirNext-Demibold", size: 32)!,
             NSAttributedString.Key.paragraphStyle : style
         ]
-        self.sentence = NSMutableAttributedString(string: initialSentence, attributes: attributes)
+        self.sentenceAttrString = NSMutableAttributedString(string: initialSentence, attributes: attributes)
         
         self.translation = translation
     }
     func start() {
-        delegate?.setText(sentence)
+        delegate?.setText(sentenceAttrString)
     }
     
     func said(word: String) {
-        if words.contains(word.lowercased()) {
-            sentence = sentence.highlight([word], this: UIColor.green)
+        if words.contains(word.lowercased())
+            || initialSentence.lowercased().contains(word.lowercased()){
+            sentenceAttrString = sentenceAttrString.highlight([word], this: UIColor.green)
             words = words.filter { $0 != word.lowercased() }
         }
         if words.isEmpty {
             delegate?.textSayingComplete()
         }
     }
+}
+
+extension Sentence {
     
     static func parseForData(dictionaryArray: [[String: String]], forLanguage language: LearningLanguage) -> [Sentence] {
         
         var sentences = [Sentence]()
         
         for dic in dictionaryArray {
-            let currentLocale = Locale.current.identifier
-            let translated = dic[currentLocale]
+//            let currentLocale = Locale.preferredLanguages[0]
+            let appLang = LanguageService.shared.appLanguage
+            let translated = dic[appLang.rawValue]
             let saying = dic[language.rawValue]
             
             if let translated = translated, let saying = saying {
@@ -76,5 +81,4 @@ class Sentence {
         
         return sentences
     }
-    
 }

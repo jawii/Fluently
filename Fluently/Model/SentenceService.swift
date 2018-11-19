@@ -9,7 +9,7 @@
 import Foundation
 
 #warning("Test that all locales exists")
-enum LearningLanguage: String {
+enum LearningLanguage: String, CaseIterable {
     case finnish = "fi_FI"
     case englishUK = "en_UK"
     case englishUS = "en_US"
@@ -17,17 +17,17 @@ enum LearningLanguage: String {
     case german = "de"
 }
 
-enum SentenceCategory: String {
+enum SentenceCategory: String, CaseIterable {
     case smallTalk = "smallTalk"
     case jobInterview = "jobInterview"
-    case restaurant
-    case travelling
+    case restaurant = "restaurant"
+    case travelling = "travelling"
 }
 
 class SentenceService {
     
     /// Fetches all sentences for given language and category
-    func fetchSententces(forLanguage language: LearningLanguage, andForCategory category: SentenceCategory) -> [Sentence ]{
+    func fetchSentences(forLanguage language: LearningLanguage, andForCategory category: SentenceCategory) -> [Sentence ]{
         
         var sentences = [Sentence]()
         
@@ -38,17 +38,7 @@ class SentenceService {
                 
                 if let jsonResult = jsonResult as? Dictionary<String, AnyObject>,
                 let sentenceDic = jsonResult[category.rawValue] as? [[String: String]] {
-                    
-                    for dic in sentenceDic {
-                        let currentLocale = Locale.current.identifier
-                        let translated = dic[currentLocale]
-                        let saying = dic[language.rawValue]
-                        
-                        if let translated = translated, let saying = saying {
-                            let sentence = Sentence(saying: saying, translation: translated)
-                            sentences.append(sentence)
-                        }
-                    }
+                    sentences = Sentence.parseForData(dictionaryArray: sentenceDic, forLanguage: language)
                 }
             } catch {
                 debugPrint(error)

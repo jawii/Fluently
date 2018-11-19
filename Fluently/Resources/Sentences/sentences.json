@@ -2,7 +2,7 @@
 {
    "smallTalk": [
     {
-      "fi-Fi": "Katsoitko tämän päivän uutiset?",
+      "fi_FI": "Katsoitko tämän päivän uutiset?",
       "en_UK": "Did you catch the news today?",
       "en_US": "Did you catch the news today?",
       "sv_SE": "",
@@ -10,7 +10,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Kaunis päivä tänään!",
+      "fi_FI": "Kaunis päivä tänään!",
       "en_UK": "Beautiful day, isn't it?",
       "en_US": "Beautiful day, isn't it?",
       "sv_SE": "",
@@ -18,7 +18,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Näyttää siltä että kohta sataa lunta.",
+      "fi_FI": "Näyttää siltä että kohta sataa lunta.",
       "en_UK": "It looks like it is going to snow.",
       "en_US": "It looks like it is going to snow.",
       "sv_SE": "",
@@ -26,7 +26,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Ei voitaisi toivoa parempaa päivää?",
+      "fi_FI": "Ei voitaisi toivoa parempaa päivää?",
       "en_UK": "We could not ask for a nicer day, could we?",
       "en_US": "We could not ask for a nicer day, could we?",
       "sv_SE": "",
@@ -34,7 +34,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Tilasitko sinä tämän auringonpaisteen?",
+      "fi_FI": "Tilasitko sinä tämän auringonpaisteen?",
       "en_UK": "Did you order this sunshine?",
       "en_US": "Did you order this sunshine?",
       "sv_SE": "",
@@ -42,7 +42,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Linja-auto on varmaan myöhässä.",
+      "fi_FI": "Linja-auto on varmaan myöhässä.",
       "en_UK": "The bus must be running late today.",
       "en_US": "The bus must be running late today.",
       "sv_SE": "",
@@ -50,7 +50,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Olen kuullut sinusta paljon hyvää.",
+      "fi_FI": "Olen kuullut sinusta paljon hyvää.",
       "en_UK": "I have heard so much good about you.",
       "en_US": "I have heard so much good about you.",
       "sv_SE": "",
@@ -58,7 +58,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Haluan esitellä sinulle erään henkilön.",
+      "fi_FI": "Haluan esitellä sinulle erään henkilön.",
       "en_UK": "I would like to you to meet",
       "en_US": "I would like to you to meet",
       "sv_SE": "",
@@ -66,7 +66,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Olemmeko tavanneet jossain?",
+      "fi_FI": "Olemmeko tavanneet jossain?",
       "en_UK": "Have me met before?",
       "en_US": "Have me met before?",
       "sv_SE": "",
@@ -74,7 +74,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Kiva nähdä sinua taas!",
+      "fi_FI": "Kiva nähdä sinua taas!",
       "en_UK": "It's good to see you again!",
       "en_US": "It's good to see you again!",
       "sv_SE": "",
@@ -84,7 +84,7 @@
   ],
   "jobInterview": [
     {
-      "fi-Fi": "Hyvää huomenta. Nimeni on Susan ja haluan kiittää teitä tästä tilaisuudesta.",
+      "fi_FI": "Hyvää huomenta. Nimeni on Susan ja haluan kiittää teitä tästä tilaisuudesta.",
       "en_UK": "Good morning. My name is Susan and I want to thank you for this opportunity.",
       "en_US": "Good morning. My name is Susan and I want to thank you for this opportunity.",
       "sv_SE": "",
@@ -92,7 +92,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Hei. Olen Jack ja minulle on ilo olla täällä.",
+      "fi_FI": "Hei. Olen Jack ja minulle on ilo olla täällä.",
       "en_UK": "Hello, my name is Jack and it's pleasure for me to be here.",
       "en_US": "Hello, my name is Jack and it's pleasure for me to be here.",
       "sv_SE": "",
@@ -100,7 +100,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Valmistuin yliopistosta vuonna 2007.",
+      "fi_FI": "Valmistuin yliopistosta vuonna 2007.",
       "en_UK": "I graduated from University in 2007",
       "en_US": "I graduated from University in 2007",
       "sv_SE": "",
@@ -108,7 +108,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Minulla on vankka IT - koulutustausta. ",
+      "fi_FI": "Minulla on vankka IT - koulutustausta. ",
       "en_UK": "I have solid IT educational background.",
       "en_US": "I have solid IT educational background.",
       "sv_SE": "",
@@ -116,7 +116,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Terve. Nimeni on Mike. Kiitos soitosta. Haluaisin todella työskennellä tässä yrityksessä.",
+      "fi_FI": "Terve. Nimeni on Mike. Kiitos soitosta. Haluaisin todella työskennellä tässä yrityksessä.",
       "en_UK": "Hello. My name is Mike and I am glad you called me because I really want to work for this company.",
       "en_US": "Hello. My name is Mike and I am glad you called me because I really want to work for this company.",
       "sv_SE": "",
@@ -124,7 +124,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Tulin tänne koska luulen, että minulla on ominaisuudet jota te olette hakemassa. ",
+      "fi_FI": "Tulin tänne koska luulen, että minulla on ominaisuudet jota te olette hakemassa. ",
       "en_UK": "I am here because I think I have the profile you are looking for.",
       "en_US": "I am here because I think I have the profile you are looking for.",
       "sv_SE": "",
@@ -132,7 +132,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Anteeksi, voisitko toistaa kysymyksen?",
+      "fi_FI": "Anteeksi, voisitko toistaa kysymyksen?",
       "en_UK": "I am sorry. Would you please repeat the question?",
       "en_US": "I am sorry. Would you please repeat the question?",
       "sv_SE": "",
@@ -140,7 +140,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Anteeksi. En saanut selvää. Voisitko sanoa uudelleen.",
+      "fi_FI": "Anteeksi. En saanut selvää. Voisitko sanoa uudelleen.",
       "en_UK": "Excuse me. I did not hear you. Can you please say that again?",
       "en_US": "Excuse me. I did not hear you. Can you please say that again?",
       "sv_SE": "",
@@ -148,7 +148,7 @@
       "de": ""
     },
     {
-      "fi-Fi": "Voisitko toistaa kysymyksen ja puhua vähän kovempaa?",
+      "fi_FI": "Voisitko toistaa kysymyksen ja puhua vähän kovempaa?",
       "en_UK": "Could you please repeat the question and speak a little bit harder?",
       "en_US": "Could you please repeat the question and speak a little bit harder?",
       "sv_SE": "",
@@ -156,9 +156,157 @@
       "de": ""
     },
     {
-      "fi-Fi": "Anteeksi, en ymmärrä. Voisitko sano sen uudelleen?",
+      "fi_FI": "Anteeksi, en ymmärrä. Voisitko sano sen uudelleen?",
       "en_UK": "Could you please repeat the question and speak a little bit harder?",
       "en_US": "Could you please repeat the question and speak a little bit harder?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    }
+  ],
+  "restaurant": [
+    {
+      "fi_FI": "Onko teillä vapaita pöytiä?",
+      "en_UK": "Do you have any free tables?",
+      "en_US": "Do you have any free tables?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Haluaisin tehdä varauksen kahdelle henkilölle.",
+      "en_UK": "I would like to make reservation for two.",
+      "en_US": "I would like to make reservation for two.",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Voisinko nähdä viinilistan, kiitos?",
+      "en_UK": "Could i see the wine list, please?",
+      "en_US": "Could i see the wine list, please?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Mikä on päivän keitto?",
+      "en_UK": "What is the soup of the day?",
+      "en_US": "What is the soup of the day?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Olen allerginen pähkinöille.",
+      "en_UK": "I am allergic to nuts.",
+      "en_US": "I am allergic to nuts.",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Alkupalaksi ottaisin keittoa ja pääruuaksi pihvin.",
+      "en_UK": "For my starter I will have the soup, and for my main course the steak.",
+      "en_US": "For my starter I will have the soup, and for my main course the steak.",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Ottaisin pihvini puoliraakana.",
+      "en_UK": "I would like to have my steak as medium-rare.",
+      "en_US": "I would like to have my steak as medium-rare.",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Voisimmeko saada toisen pullon viiniä?",
+      "en_UK": "Could we have another bottle of wine?",
+      "en_US": "Could we have another bottle of wine?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Saisimmeko laskun?",
+      "en_UK": "Could we have the bill, please?",
+      "en_US": "Could we have the bill, please?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    }
+  ],
+  "travelling": [
+    {
+      "fi_FI": "Milloin lentoni lähtee?",
+      "en_UK": "What time is my flight?",
+      "en_US": "What time is my flight?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Kuinka paljon tämä lehti maksaa?",
+      "en_UK": "How much does the magazine cost?",
+      "en_US": "How much does the magazine cost?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Viivyn täällä neljä päivää.",
+      "en_UK": "I will be here for four days.",
+      "en_US": "I will be here for four days.",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Anteeksi onko teillä karttaa?",
+      "en_UK": "Excuse me, do you have a map?",
+      "en_US": "Excuse me, do you have a map?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Tiedätkö missä tämä hotelli sijaitsee?",
+      "en_UK": "Do you know where this hotel is?",
+      "en_US": "Do you know where this hotel is?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Kuinka monta sänkyä huoneessa on?",
+      "en_UK": "How many bed are in the room?",
+      "en_US": "How many bed are in the room?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Kuinka pääsen internettiin?",
+      "en_UK": "How do i access the internet?",
+      "en_US": "How do i access the internet?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Kuinka saan yhteyden huonepalveluun?",
+      "en_UK": "How do i call for room service?",
+      "en_US": "How do i call for room service?",
+      "sv_SE": "",
+      "fr_FR": "",
+      "de": ""
+    },
+    {
+      "fi_FI": "Mistä löydän ruokakaupan?",
+      "en_UK": "Where can I find a grocery store?",
+      "en_US": "Where can I find a grocery store?",
       "sv_SE": "",
       "fr_FR": "",
       "de": ""

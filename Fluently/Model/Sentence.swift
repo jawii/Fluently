@@ -30,6 +30,8 @@ class Sentence {
     
     init(saying: String, translation: String?) {
         self.initialSentence = saying
+        
+        // Removes all special characters from word and puts them on the list
         self.words = saying.components(separatedBy: " ").map { $0.lowercased().stripped }
         
         let style = NSMutableParagraphStyle()
@@ -50,11 +52,29 @@ class Sentence {
     func said(word: String) {
         if words.contains(word.lowercased()) {
             sentence = sentence.highlight([word], this: UIColor.green)
-            words.filter { $0 != word.lowercased() }
+            words = words.filter { $0 != word.lowercased() }
         }
         if words.isEmpty {
             delegate?.textSayingComplete()
         }
+    }
+    
+    static func parseForData(dictionaryArray: [[String: String]], forLanguage language: LearningLanguage) -> [Sentence] {
+        
+        var sentences = [Sentence]()
+        
+        for dic in dictionaryArray {
+            let currentLocale = Locale.current.identifier
+            let translated = dic[currentLocale]
+            let saying = dic[language.rawValue]
+            
+            if let translated = translated, let saying = saying {
+                let sentence = Sentence(saying: saying, translation: translated)
+                sentences.append(sentence)
+            }
+        }
+        
+        return sentences
     }
     
 }

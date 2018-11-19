@@ -38,6 +38,7 @@ extension String {
         return attributedString
     }
     
+    /// Removes all character which are not numbers
     var stripped: String {
         return self.filter {GlobalConstants.ALLOWED_CHARACTERS.contains($0) }
     }

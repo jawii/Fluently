@@ -32,7 +32,7 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         
         let service = SentenceService()
-        sentences = service.fetchSententces(forLanguage: .englishUS, andForCategory: .smallTalk).shuffled()
+        sentences = service.fetchSentences(forLanguage: .englishUS, andForCategory: .smallTalk).shuffled()
         
         
         currentSentence = sentences.removeFirst()

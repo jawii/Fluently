@@ -22,6 +22,8 @@ class RecordButtonView: UIView {
     var stopRects = CAShapeLayer()
     private var shootRight: Bool = false
     
+    var isRecordingEnabled = true
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         outlineLayer.path = self.drawOutline().cgPath
@@ -52,6 +54,16 @@ class RecordButtonView: UIView {
         stopRects.path = nil
         recordRectLayer1.path = nil
         recordRectLayer2.path = nil
+    }
+    
+    func disableRecording() {
+        isRecordingEnabled = false
+        centerLayer.opacity = 0.5
+    }
+    
+    func enableRecording() {
+        isRecordingEnabled = true
+        centerLayer.opacity = 1.0
     }
     
     func recordingStarted() {

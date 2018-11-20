@@ -40,7 +40,8 @@ class Sentence {
         
         let attributes : [NSAttributedString.Key : Any ] = [
             NSAttributedString.Key.font : UIFont(name: "AvenirNext-Demibold", size: 32)!,
-            NSAttributedString.Key.paragraphStyle : style
+            NSAttributedString.Key.paragraphStyle : style,
+            NSAttributedString.Key.foregroundColor : UIColor.black
         ]
         self.sentenceAttrString = NSMutableAttributedString(string: initialSentence, attributes: attributes)
         
@@ -65,6 +66,21 @@ class Sentence {
         }
         
         return isInSentence
+    }
+    
+    func highLightTappedWord(word: String) {
+        // create copy
+        let copy = sentenceAttrString.mutableCopy() as! NSMutableAttributedString
+        let highlightOneWord = copy.highlight([word], this: GlobalConstants.Color.havelockBlue)
+        delegate?.setText(highlightOneWord)
+    }
+    func highlightWholeWord() {
+        let attrs: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: GlobalConstants.Color.havelockBlue
+        ]
+        let copy = sentenceAttrString.mutableCopy() as! NSMutableAttributedString
+        copy.addAttributes(attrs, range: NSRange(location: 0, length: copy.length))
+        delegate?.setText(copy)
     }
 }
 

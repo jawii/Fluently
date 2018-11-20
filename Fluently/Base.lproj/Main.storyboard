@@ -86,18 +86,29 @@
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="31"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-A6-j4v">
-                                <rect key="frame" x="20" y="587" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="DnP-u4-pTN"/>
-                                    <constraint firstAttribute="width" constant="60" id="Lf1-RH-xQq"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="speak"/>
-                                <connections>
-                                    <action selector="saySentenceButtonHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rc4-jL-VbH"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kqc-Xt-tR0">
+                                <rect key="frame" x="20" y="589.5" width="60" height="67.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNw-A6-j4v">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="DnP-u4-pTN"/>
+                                            <constraint firstAttribute="width" constant="60" id="Lf1-RH-xQq"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="speak"/>
+                                        <connections>
+                                            <action selector="saySentenceButtonHandler:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rc4-jL-VbH"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="say it" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPA-D7-02x">
+                                        <rect key="frame" x="0.0" y="48" width="60" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="Havelock Blue"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="SKR-27-nyf">
                                 <rect key="frame" x="137.5" y="517" width="100" height="130"/>
                                 <subviews>
@@ -117,27 +128,38 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-gu-GsW">
-                                <rect key="frame" x="295" y="587" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="YDp-Ae-3TO"/>
-                                    <constraint firstAttribute="width" constant="60" id="fA9-Xc-tC1"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="skipIcon"/>
-                                <connections>
-                                    <action selector="skipWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eOc-Fo-2Xe"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="gKP-dv-y9e">
+                                <rect key="frame" x="295" y="589.5" width="60" height="67.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXu-gu-GsW">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="YDp-Ae-3TO"/>
+                                            <constraint firstAttribute="width" constant="60" id="fA9-Xc-tC1"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="skipIcon"/>
+                                        <connections>
+                                            <action selector="skipWord:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eOc-Fo-2Xe"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="skip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WlA-m6-ER1">
+                                        <rect key="frame" x="17" y="48" width="26.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" name="Havelock Blue"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sXu-gu-GsW" secondAttribute="bottom" constant="20" id="8dS-zn-uZO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SKR-27-nyf" secondAttribute="bottom" constant="20" id="DgF-bH-Ftd"/>
-                            <constraint firstItem="aNw-A6-j4v" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LZh-d9-67l"/>
+                            <constraint firstItem="kqc-Xt-tR0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="L0R-nW-fs7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kqc-Xt-tR0" secondAttribute="bottom" constant="10" id="OHf-wc-hFc"/>
                             <constraint firstItem="SKR-27-nyf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Oab-Ck-sXm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aNw-A6-j4v" secondAttribute="bottom" constant="20" id="ezX-0m-gZ4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sXu-gu-GsW" secondAttribute="trailing" constant="20" id="odr-XS-4J4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gKP-dv-y9e" secondAttribute="trailing" constant="20" id="cOr-FH-faU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gKP-dv-y9e" secondAttribute="bottom" constant="10" id="epe-mw-a2j"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -145,6 +167,7 @@
                         <outlet property="recordButtonBottomLabel" destination="oUs-TZ-AfM" id="gZh-SY-wqG"/>
                         <outlet property="recordButtonView" destination="U2d-mC-8fk" id="j6o-1m-x9p"/>
                         <outlet property="saySentenceButton" destination="aNw-A6-j4v" id="q46-iL-SwC"/>
+                        <outlet property="saySentenceLabel" destination="tPA-D7-02x" id="KqM-Qv-A6n"/>
                         <outlet property="sentenceToSayTextView" destination="AxW-Me-HSJ" id="d22-8u-KjO"/>
                         <outlet property="skipSentenceButton" destination="sXu-gu-GsW" id="3nI-wM-Zyi"/>
                     </connections>

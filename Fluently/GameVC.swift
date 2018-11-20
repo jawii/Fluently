@@ -14,8 +14,12 @@ class GameVC: UIViewController {
     
     @IBOutlet weak var sentenceToSayTextView: UITextView!
     @IBOutlet weak var recordButtonView: RecordButtonView!
+    
     @IBOutlet weak var saySentenceButton: UIButton!
+    @IBOutlet weak var saySentenceLabel: UILabel!
+    
     @IBOutlet weak var skipSentenceButton: UIButton!
+    
     @IBOutlet weak var recordButtonBottomLabel: UILabel!
     
     
@@ -64,11 +68,7 @@ class GameVC: UIViewController {
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
         let point = tapGesture.location(in: sentenceToSayTextView)
         if let detectedWord = sentenceToSayTextView.getWordAtPosition(point) {
-            if let oldText = sentenceToSayTextView.attributedText {
-                // Highlight tapped word
-                let mutable = NSMutableAttributedString(attributedString: oldText)
-                sentenceToSayTextView.attributedText = mutable.highlight([detectedWord], this: GlobalConstants.Color.havelockBlue)
-            }
+            currentSentence.highLightTappedWord(word: detectedWord)
             sayWord(word: detectedWord)
         }
     }
@@ -81,6 +81,10 @@ class GameVC: UIViewController {
     }
     
     @objc func recordButtonPressHandler() {
+        if !recordButtonView.isRecordingEnabled {
+            return
+        }
+        
         if listener.audioEngine.isRunning {
             listener.stop()
         } else {
@@ -96,8 +100,16 @@ class GameVC: UIViewController {
     }
     
     @IBAction func saySentenceButtonHandler(_ sender: Any) {
-        listener.stop()
-        sayWord(word: currentSentence.initialSentence)
+        if synth.isSpeaking {
+            synth.stopSpeaking(at: AVSpeechBoundary.immediate)
+            saySentenceLabel.text = "Say it"
+        } else {
+            saySentenceLabel.text = "Saying..."
+            listener.stop()
+            currentSentence.highlightWholeWord()
+            sayWord(word: currentSentence.initialSentence)
+        }
+        
     }
 }
 
@@ -140,16 +152,22 @@ extension GameVC: WordListenerDelegate {
 
 extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        print("Synthesizer started")
-        recordButtonView.isUserInteractionEnabled = false
-        saySentenceButton.isEnabled = false
+//        recordButtonView.isUserInteractionEnabled = false
+        recordButtonView.disableRecording()
         
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        print("Synthesizer stopped")
-        recordButtonView.isUserInteractionEnabled = true
-        saySentenceButton.isEnabled = true
+//        recordButtonView.isUserInteractionEnabled = true
+        recordButtonView.enableRecording()
         sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
+        saySentenceLabel.text = "Say it"
+    }
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+//        recordButtonView.isUserInteractionEnabled = true
+        saySentenceLabel.text = "Say it"
+        recordButtonView.enableRecording()
+        sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
+        
     }
 }
 

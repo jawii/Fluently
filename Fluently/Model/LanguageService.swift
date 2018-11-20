@@ -20,6 +20,6 @@ class LanguageService {
     
     static let shared = LanguageService()
     
-    var appLanguage = LearningLanguage.englishUK
+    var appLanguage = LearningLanguage.finnish
     var learningLanguage = LearningLanguage.englishUK
 }

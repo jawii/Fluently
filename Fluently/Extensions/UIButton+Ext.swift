@@ -10,6 +10,7 @@ import UIKit
 
 extension UIButton {
 
+    #warning("Not used ")
 func alignImageAndTitleVertically(padding: CGFloat = 6.0) {
     let imageSize = self.imageView!.frame.size
     let titleSize = self.titleLabel!.frame.size

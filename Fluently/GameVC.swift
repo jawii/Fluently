@@ -12,15 +12,17 @@ import AVFoundation
 
 class GameVC: UIViewController {
     
+    
+    @IBOutlet weak var translatedTextLabel: UILabel!
     @IBOutlet weak var sentenceToSayTextView: UITextView!
     @IBOutlet weak var recordButtonView: RecordButtonView!
+    @IBOutlet weak var recordButtonBottomLabel: UILabel!
+    
     
     @IBOutlet weak var saySentenceButton: UIButton!
     @IBOutlet weak var saySentenceLabel: UILabel!
     
     @IBOutlet weak var skipSentenceButton: UIButton!
-    
-    @IBOutlet weak var recordButtonBottomLabel: UILabel!
     
     
     var listener: WordListener!
@@ -29,27 +31,35 @@ class GameVC: UIViewController {
     var currentSentence: Sentence! {
         didSet {
             currentSentence.start()
+            translatedTextLabel.text = currentSentence.translation
         }
     }
     // Keeps track of said words
     var wordsHeared = [String]()
     
+    // Synthesizer for speaking
     let synth = AVSpeechSynthesizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        saySentenceButton.alignImageAndTitleVertically()
-//        skipSentenceButton.alignImageAndTitleVertically()
         synth.delegate = self
+        
         
         let service = SentenceService()
         let learningLang = LanguageService.shared.learningLanguage
         sentences = service.fetchSentences(forLanguage: learningLang, andForCategory: .smallTalk).shuffled()
+
         
         currentSentence = sentences.removeFirst()
         currentSentence.delegate = self
         currentSentence.start()
+        
+        if LanguageService.shared.appLanguage != learningLang {
+            translatedTextLabel.text = currentSentence.translation
+        } else {
+            translatedTextLabel.isHidden = true
+        }
         
         listener = WordListener(locale: Locale(identifier: learningLang.rawValue))
         listener.delegate = self
@@ -63,6 +73,14 @@ class GameVC: UIViewController {
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(recordButtonPressHandler))
         recordButtonView.isUserInteractionEnabled = true
         recordButtonView.addGestureRecognizer(tap1)
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        translatedTextLabel.layer.cornerRadius = 5
+        translatedTextLabel.layer.borderWidth = 1
+        translatedTextLabel.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
@@ -81,6 +99,7 @@ class GameVC: UIViewController {
     }
     
     @objc func recordButtonPressHandler() {
+        
         if !recordButtonView.isRecordingEnabled {
             return
         }
@@ -100,6 +119,7 @@ class GameVC: UIViewController {
     }
     
     @IBAction func saySentenceButtonHandler(_ sender: Any) {
+        
         if synth.isSpeaking {
             synth.stopSpeaking(at: AVSpeechBoundary.immediate)
             saySentenceLabel.text = "Say it"
@@ -114,23 +134,33 @@ class GameVC: UIViewController {
 }
 
 extension GameVC: SentenceDelegate {
+    
     func setText(_ text: NSMutableAttributedString) {
         self.sentenceToSayTextView.attributedText = text
     }
     
     func setContextualStrings(to strings: [String]) {
         if listener != nil {
-            print("Set contextual strings!")
             listener.setContextualStrings(strings)
         }
     }
+    
     func textSayingComplete() {
         print("Word complete!")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+//            self.listener.stop()
+            self.currentSentence = self.sentences.removeFirst()
+            self.currentSentence.delegate = self
+            self.currentSentence.start()
+        }
     }
 }
 
 extension GameVC: WordListenerDelegate {
     func wordsHeared(word: String) {
+//        print("HEARED: \(word)")
+        
         if wordsHeared.last != word {
             wordsHeared.append(word.lowercased())
             _ = currentSentence.said(word: word)
@@ -152,18 +182,15 @@ extension GameVC: WordListenerDelegate {
 
 extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-//        recordButtonView.isUserInteractionEnabled = false
         recordButtonView.disableRecording()
         
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-//        recordButtonView.isUserInteractionEnabled = true
         recordButtonView.enableRecording()
         sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
         saySentenceLabel.text = "Say it"
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-//        recordButtonView.isUserInteractionEnabled = true
         saySentenceLabel.text = "Say it"
         recordButtonView.enableRecording()
         sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString

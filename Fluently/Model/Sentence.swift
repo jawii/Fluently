@@ -24,10 +24,13 @@ class Sentence {
             delegate?.setContextualStrings(to: words)
         }
     }
-    var words: [String]
+    var words: [String] {
+        didSet {
+//            print("Words: \(words)")
+        }
+    }
     
     weak var delegate: SentenceDelegate?
-
     
     init(saying: String, translation: String?) {
         self.initialSentence = saying
@@ -53,19 +56,38 @@ class Sentence {
     }
     
     func said(word: String) -> Bool {
+        // Return if words is empty
+        guard !words.isEmpty else { return false }
+        
         var isInSentence = false
-        if words.contains(word.lowercased())
-            || initialSentence.lowercased().contains(word.lowercased()){
-            sentenceAttrString = sentenceAttrString.highlight([word], this: UIColor.green)
-            words = words.filter { $0 != word.lowercased() }
+        
+        let wordLowerCased = word.lowercased()
+        let initialLowerCased = initialSentence.lowercased()
+        
+        print("Heard: \(wordLowerCased)")
+        if words.contains(wordLowerCased) ||
+           words.contains(wordLowerCased.stripped) ||
+           initialLowerCased.contains(wordLowerCased) ||
+           initialLowerCased.contains(wordLowerCased.stripped) {
+            print("Words contains!: \(wordLowerCased)")
             
+            sentenceAttrString = sentenceAttrString.highlight([word], this: UIColor.green)
+            self.removeFromWord(word: wordLowerCased)
             isInSentence = true
         }
+        
         if words.isEmpty {
             delegate?.textSayingComplete()
         }
         
         return isInSentence
+    }
+    private func removeFromWord(word: String) {
+        print("Removing!: \(word)")
+        print(word.stripped)
+        print("Words: \(words)")
+        self.words = words.filter { $0 != word && $0 != word.stripped }
+        print("Words: \(words)")
     }
     
     func highLightTappedWord(word: String) {

@@ -113,7 +113,6 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
 //                    print(lastSegment.substring.lowercased())
                     self.delegate?.wordsHeared(word: lastSegment.substring.lowercased())
                 }
-//                print(recognitionRequest.contextualStrings)
                 /*
                 print(result!.bestTranscription.segments.count)
                 var segments = result!.bestTranscription.segments

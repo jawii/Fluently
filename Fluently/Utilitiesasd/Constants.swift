@@ -26,6 +26,7 @@ struct GlobalConstants {
     
     struct Color {
         static let havelockBlue = UIColor(named: "Havelock Blue")!
+        static let coral = UIColor(named: "Coral")!
     }
     
     static let ALLOWED_CHARACTERS = Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ")

@@ -16,7 +16,8 @@ extension String {
             let words = self.components(separatedBy: " ")
             var position:Int = 0
             for word in words {
-                if word.lowercased().contains(string.lowercased()) {
+                if word.lowercased().stripped == string.lowercased().stripped {
+//                if word.lowercased().contains(string.lowercased()) {
                     let startIndex = position
                     let endIndex = word.count
                     let range = NSMakeRange(startIndex, endIndex)

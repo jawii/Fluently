@@ -16,6 +16,7 @@ class GameVC: UIViewController {
     @IBOutlet weak var recordButtonView: RecordButtonView!
     @IBOutlet weak var saySentenceButton: UIButton!
     @IBOutlet weak var skipSentenceButton: UIButton!
+    @IBOutlet weak var recordButtonBottomLabel: UILabel!
     
     
     var listener: WordListener!
@@ -29,22 +30,22 @@ class GameVC: UIViewController {
     // Keeps track of said words
     var wordsHeared = [String]()
     
+    let synth = AVSpeechSynthesizer()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
 //        saySentenceButton.alignImageAndTitleVertically()
 //        skipSentenceButton.alignImageAndTitleVertically()
+        synth.delegate = self
         
         let service = SentenceService()
         let learningLang = LanguageService.shared.learningLanguage
         sentences = service.fetchSentences(forLanguage: learningLang, andForCategory: .smallTalk).shuffled()
         
-        
         currentSentence = sentences.removeFirst()
         currentSentence.delegate = self
         currentSentence.start()
-        
-        
         
         listener = WordListener(locale: Locale(identifier: learningLang.rawValue))
         listener.delegate = self
@@ -54,6 +55,7 @@ class GameVC: UIViewController {
         sentenceToSayTextView.isUserInteractionEnabled = true
         sentenceToSayTextView.addGestureRecognizer(tap)
         
+        // Add gestures to recordbutton
         let tap1 = UITapGestureRecognizer(target: self, action: #selector(recordButtonPressHandler))
         recordButtonView.isUserInteractionEnabled = true
         recordButtonView.addGestureRecognizer(tap1)
@@ -62,19 +64,20 @@ class GameVC: UIViewController {
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
         let point = tapGesture.location(in: sentenceToSayTextView)
         if let detectedWord = sentenceToSayTextView.getWordAtPosition(point) {
+            if let oldText = sentenceToSayTextView.attributedText {
+                // Highlight tapped word
+                let mutable = NSMutableAttributedString(attributedString: oldText)
+                sentenceToSayTextView.attributedText = mutable.highlight([detectedWord], this: GlobalConstants.Color.havelockBlue)
+            }
             sayWord(word: detectedWord)
         }
     }
     
     @objc func sayWord(word: String) {
         listener.stop()
-        let utterance = AVSpeechUtterance(string: word)
+        let utterance = AVSpeechUtterance(string: word.lowercased())
         utterance.voice = AVSpeechSynthesisVoice(language: LanguageService.shared.learningLanguage.rawValue)
-        utterance.rate = 0.8
-        let synth = AVSpeechSynthesizer()
-        synth.delegate = self
         synth.speak(utterance)
-        
     }
     
     @objc func recordButtonPressHandler() {
@@ -86,12 +89,14 @@ class GameVC: UIViewController {
     }
     
     @IBAction func skipWord(_ sender: UIButton) {
+        listener.stop()
         currentSentence = sentences.removeFirst()
         currentSentence.delegate = self
         currentSentence.start()
     }
     
     @IBAction func saySentenceButtonHandler(_ sender: Any) {
+        listener.stop()
         sayWord(word: currentSentence.initialSentence)
     }
 }
@@ -103,6 +108,7 @@ extension GameVC: SentenceDelegate {
     
     func setContextualStrings(to strings: [String]) {
         if listener != nil {
+            print("Set contextual strings!")
             listener.setContextualStrings(strings)
         }
     }
@@ -115,15 +121,19 @@ extension GameVC: WordListenerDelegate {
     func wordsHeared(word: String) {
         if wordsHeared.last != word {
             wordsHeared.append(word.lowercased())
-            currentSentence.said(word: word)
+            _ = currentSentence.said(word: word)
             recordButtonView.shootWord(word: word.lowercased())
         }
     }
     
     func recordinStarted() {
+        recordButtonBottomLabel.text = "RECORDING"
+        recordButtonBottomLabel.textColor = GlobalConstants.Color.coral
         recordButtonView.recordingStarted()
     }
     func recordingEnded() {
+        recordButtonBottomLabel.text = "START"
+        recordButtonBottomLabel.textColor = GlobalConstants.Color.havelockBlue
         recordButtonView.recordingStopped()
     }
 }
@@ -132,14 +142,14 @@ extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         print("Synthesizer started")
         recordButtonView.isUserInteractionEnabled = false
-        saySentenceButton.tintColor = UIColor.black
-        listener.stop()
+        saySentenceButton.isEnabled = false
+        
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("Synthesizer stopped")
         recordButtonView.isUserInteractionEnabled = true
-        saySentenceButton.tintColor = UIColor.blue
-        listener.start()
+        saySentenceButton.isEnabled = true
+        sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
     }
 }
 

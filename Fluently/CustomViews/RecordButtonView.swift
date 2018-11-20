@@ -11,7 +11,7 @@ import UIKit
 
 class RecordButtonView: UIView {
     
-    private let recordRed = #colorLiteral(red: 1, green: 0.3607843137, blue: 0.007843137255, alpha: 1)
+    private let recordRed = GlobalConstants.Color.coral
     private let recordRed2 = #colorLiteral(red: 1, green: 0.3607843137, blue: 0.007843137255, alpha: 0.9)
     private let playBlue = UIColor(red: 0.102, green: 0.427, blue: 0.816, alpha: 1.000)
     var outlineLayer =  CAShapeLayer()
@@ -22,12 +22,6 @@ class RecordButtonView: UIView {
     var stopRects = CAShapeLayer()
     private var shootRight: Bool = false
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
     override func awakeFromNib() {
         super.awakeFromNib()
         outlineLayer.path = self.drawOutline().cgPath
@@ -154,11 +148,17 @@ class RecordButtonView: UIView {
     }
     private func createTextLayer(at position: CGPoint, withString word: String) -> CATextLayer {
         let textLayer = CATextLayer()
+       
         textLayer.frame = CGRect(x: 0, y: 0, width: 70, height: 25)
+        textLayer.contentsScale = UIScreen.main.scale
         textLayer.position = position
         textLayer.string = word
         textLayer.font = FONTAvenirNextFamily.Regular.CTFont(size: 8)
         textLayer.fontSize = 14
+        
+        textLayer.isWrapped = true
+        textLayer.truncationMode = .none
+        
         textLayer.alignmentMode = .center
         textLayer.foregroundColor = UIColor.black.cgColor
         self.layer.addSublayer(textLayer)

@@ -10,7 +10,7 @@ import UIKit
 
 protocol SentenceDelegate: class {
     func setText(_ text: NSMutableAttributedString)
-    func setContextualStrings(to :[String])
+    func setContextualStrings(to: [String])
     func textSayingComplete()
 }
 
@@ -21,6 +21,7 @@ class Sentence {
     var sentenceAttrString: NSMutableAttributedString {
         didSet {
             delegate?.setText(sentenceAttrString)
+            delegate?.setContextualStrings(to: words)
         }
     }
     var words: [String]
@@ -47,17 +48,23 @@ class Sentence {
     }
     func start() {
         delegate?.setText(sentenceAttrString)
+        delegate?.setContextualStrings(to: words)
     }
     
-    func said(word: String) {
+    func said(word: String) -> Bool {
+        var isInSentence = false
         if words.contains(word.lowercased())
             || initialSentence.lowercased().contains(word.lowercased()){
             sentenceAttrString = sentenceAttrString.highlight([word], this: UIColor.green)
             words = words.filter { $0 != word.lowercased() }
+            
+            isInSentence = true
         }
         if words.isEmpty {
             delegate?.textSayingComplete()
         }
+        
+        return isInSentence
     }
 }
 

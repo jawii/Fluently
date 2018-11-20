@@ -13,6 +13,7 @@ extension NSMutableAttributedString {
         let attributedString = self
         for word in words {
             let ranges = self.string.getRanges(of: word.lowercased())
+            print(ranges.count)
             for range in ranges {
                 attributedString.addAttributes([NSAttributedString.Key.foregroundColor: color], range: range)
             }

@@ -64,15 +64,13 @@ class Sentence {
         let wordLowerCased = word.lowercased()
         let initialLowerCased = initialSentence.lowercased()
         
-        print("Heard: \(wordLowerCased)")
         if words.contains(wordLowerCased) ||
            words.contains(wordLowerCased.stripped) ||
            initialLowerCased.contains(wordLowerCased) ||
            initialLowerCased.contains(wordLowerCased.stripped) {
-            print("Words contains!: \(wordLowerCased)")
             
             sentenceAttrString = sentenceAttrString.highlight([word], this: UIColor.green)
-            self.removeFromWord(word: wordLowerCased)
+            self.removeFromWords(word: wordLowerCased)
             isInSentence = true
         }
         
@@ -82,12 +80,8 @@ class Sentence {
         
         return isInSentence
     }
-    private func removeFromWord(word: String) {
-        print("Removing!: \(word)")
-        print(word.stripped)
-        print("Words: \(words)")
+    private func removeFromWords(word: String) {
         self.words = words.filter { $0 != word && $0 != word.stripped }
-        print("Words: \(words)")
     }
     
     func highLightTappedWord(word: String) {

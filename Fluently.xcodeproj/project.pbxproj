@@ -14,6 +14,9 @@
 		5511DB8D21A263220028F219 /* SentenceSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8C21A263220028F219 /* SentenceSaying.swift */; };
 		5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8E21A272110028F219 /* UIButton+Ext.swift */; };
 		5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB9021A2FD3B0028F219 /* LanguageService.swift */; };
+		5548C88121A51A98007EA0CB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88021A51A98007EA0CB /* MainVC.swift */; };
+		5548C88321A522A9007EA0CB /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88221A522A9007EA0CB /* UIApplication+Ext.swift */; };
+		5548C88621A522DA007EA0CB /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88521A522DA007EA0CB /* TitleView.swift */; };
 		5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D69E2193FF7B005150EC /* AppDelegate.swift */; };
 		5584D6A12193FF7B005150EC /* GameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5584D6A02193FF7B005150EC /* GameVC.swift */; };
 		5584D6A42193FF7B005150EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5584D6A22193FF7B005150EC /* Main.storyboard */; };
@@ -50,6 +53,9 @@
 		5511DB8C21A263220028F219 /* SentenceSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceSaying.swift; sourceTree = "<group>"; };
 		5511DB8E21A272110028F219 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		5511DB9021A2FD3B0028F219 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
+		5548C88021A51A98007EA0CB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		5548C88221A522A9007EA0CB /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
+		5548C88521A522DA007EA0CB /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		5584D69B2193FF7B005150EC /* Fluently.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fluently.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5584D69E2193FF7B005150EC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5584D6A02193FF7B005150EC /* GameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVC.swift; sourceTree = "<group>"; };
@@ -112,6 +118,15 @@
 			path = Sentences;
 			sourceTree = "<group>";
 		};
+		5548C88421A522C0007EA0CB /* Main Screen */ = {
+			isa = PBXGroup;
+			children = (
+				5548C88021A51A98007EA0CB /* MainVC.swift */,
+				5548C88521A522DA007EA0CB /* TitleView.swift */,
+			);
+			path = "Main Screen";
+			sourceTree = "<group>";
+		};
 		5584D6922193FF7B005150EC = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +151,7 @@
 				5584D69E2193FF7B005150EC /* AppDelegate.swift */,
 				5584D6AA2193FF7C005150EC /* Info.plist */,
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
+				5548C88421A522C0007EA0CB /* Main Screen */,
 				5584D6A02193FF7B005150EC /* GameVC.swift */,
 				5584D6B4219401DD005150EC /* WordListener.swift */,
 				55F743CA2198148200C965A4 /* Model */,
@@ -176,6 +192,7 @@
 				55BE18352195DEB7003D2CCB /* String+Ext.swift */,
 				55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */,
 				5511DB8E21A272110028F219 /* UIButton+Ext.swift */,
+				5548C88221A522A9007EA0CB /* UIApplication+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -310,12 +327,15 @@
 				55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */,
 				5584D6A12193FF7B005150EC /* GameVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
+				5548C88621A522DA007EA0CB /* TitleView.swift in Sources */,
+				5548C88321A522A9007EA0CB /* UIApplication+Ext.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
 				5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */,
 				5511DB7821A13F230028F219 /* SentenceService.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
 				5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */,
 				5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */,
+				5548C88121A51A98007EA0CB /* MainVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

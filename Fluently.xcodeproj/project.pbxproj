@@ -30,6 +30,10 @@
 		55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */; };
 		55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18352195DEB7003D2CCB /* String+Ext.swift */; };
 		55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */; };
+		55EB2DF321A6725C00D41A01 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB2DF221A6725C00D41A01 /* RoundedView.swift */; };
+		55EB2DF521A67F9500D41A01 /* MainStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB2DF421A67F9500D41A01 /* MainStatsView.swift */; };
+		55EB2DFA21A681BE00D41A01 /* StatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB2DF921A681BE00D41A01 /* StatsService.swift */; };
+		55EB2DFD21A683F200D41A01 /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EB2DFC21A683F200D41A01 /* Languages.swift */; };
 		55F743CC2198149200C965A4 /* Sentence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F743CB2198149200C965A4 /* Sentence.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +75,10 @@
 		55BE18332195DEA9003D2CCB /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 		55BE18352195DEB7003D2CCB /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		55BE18372195DEDB003D2CCB /* NSMutString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutString+Ext.swift"; sourceTree = "<group>"; };
+		55EB2DF221A6725C00D41A01 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		55EB2DF421A67F9500D41A01 /* MainStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStatsView.swift; sourceTree = "<group>"; };
+		55EB2DF921A681BE00D41A01 /* StatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsService.swift; sourceTree = "<group>"; };
+		55EB2DFC21A683F200D41A01 /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		55F743CB2198149200C965A4 /* Sentence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sentence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,7 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				5548C88021A51A98007EA0CB /* MainVC.swift */,
-				5548C88521A522DA007EA0CB /* TitleView.swift */,
+				55EB2DF721A6811900D41A01 /* Views */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -152,12 +160,12 @@
 				5584D6AA2193FF7C005150EC /* Info.plist */,
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
 				5548C88421A522C0007EA0CB /* Main Screen */,
-				5584D6A02193FF7B005150EC /* GameVC.swift */,
-				5584D6B4219401DD005150EC /* WordListener.swift */,
+				55EB2DF621A6810300D41A01 /* Playing Area */,
 				55F743CA2198148200C965A4 /* Model */,
+				55EB2DFB21A683D900D41A01 /* Enums */,
 				5584D6B6219445F0005150EC /* Resources */,
+				55EB2DF821A6819F00D41A01 /* Services */,
 				55BE18322195DE99003D2CCB /* Extensions */,
-				5507A825219FE98800683BC0 /* CustomViews */,
 				5584D6B3219400E8005150EC /* Utilities */,
 			);
 			path = Fluently;
@@ -197,12 +205,48 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		55EB2DF621A6810300D41A01 /* Playing Area */ = {
+			isa = PBXGroup;
+			children = (
+				5584D6A02193FF7B005150EC /* GameVC.swift */,
+				5584D6B4219401DD005150EC /* WordListener.swift */,
+				5507A825219FE98800683BC0 /* CustomViews */,
+			);
+			path = "Playing Area";
+			sourceTree = "<group>";
+		};
+		55EB2DF721A6811900D41A01 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5548C88521A522DA007EA0CB /* TitleView.swift */,
+				55EB2DF421A67F9500D41A01 /* MainStatsView.swift */,
+				55EB2DF221A6725C00D41A01 /* RoundedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		55EB2DF821A6819F00D41A01 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5511DB7721A13F230028F219 /* SentenceService.swift */,
+				55EB2DF921A681BE00D41A01 /* StatsService.swift */,
+				5511DB9021A2FD3B0028F219 /* LanguageService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		55EB2DFB21A683D900D41A01 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				55EB2DFC21A683F200D41A01 /* Languages.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		55F743CA2198148200C965A4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				55F743CB2198149200C965A4 /* Sentence.swift */,
-				5511DB7721A13F230028F219 /* SentenceService.swift */,
-				5511DB9021A2FD3B0028F219 /* LanguageService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,15 +366,19 @@
 			files = (
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
 				55F743CC2198149200C965A4 /* Sentence.swift in Sources */,
+				55EB2DFA21A681BE00D41A01 /* StatsService.swift in Sources */,
 				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
 				55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */,
 				55BE18342195DEA9003D2CCB /* UITextView+Ext.swift in Sources */,
 				5584D6A12193FF7B005150EC /* GameVC.swift in Sources */,
 				5584D69F2193FF7B005150EC /* AppDelegate.swift in Sources */,
 				5548C88621A522DA007EA0CB /* TitleView.swift in Sources */,
+				55EB2DFD21A683F200D41A01 /* Languages.swift in Sources */,
 				5548C88321A522A9007EA0CB /* UIApplication+Ext.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
 				5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */,
+				55EB2DF521A67F9500D41A01 /* MainStatsView.swift in Sources */,
+				55EB2DF321A6725C00D41A01 /* RoundedView.swift in Sources */,
 				5511DB7821A13F230028F219 /* SentenceService.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,
 				5507A827219FE9B200683BC0 /* RecordButtonView.swift in Sources */,

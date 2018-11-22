@@ -8,14 +8,6 @@
 
 import Foundation
 
-enum LearningLanguage: String, CaseIterable {
-    case finnish = "fi_FI"
-    case englishUK = "en_UK"
-    case englishUS = "en_US"
-    case swedish = "sv_SE"
-    case german = "de"
-}
-
 class LanguageService {
     
     static let shared = LanguageService()

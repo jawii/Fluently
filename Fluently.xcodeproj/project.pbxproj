@@ -16,6 +16,9 @@
 		5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB9021A2FD3B0028F219 /* LanguageService.swift */; };
 		553414BE21A7C1E800C4E6B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 553414C021A7C1E800C4E6B9 /* Localizable.strings */; };
 		553414C321A7C78F00C4E6B9 /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C221A7C78F00C4E6B9 /* TimeInterval+Ext.swift */; };
+		553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C421A8388400C4E6B9 /* SentenceCategory.swift */; };
+		553414C821A839D300C4E6B9 /* SentenceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C621A839D300C4E6B9 /* SentenceCategoryCell.swift */; };
+		553414C921A839D300C4E6B9 /* SentenceCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553414C721A839D300C4E6B9 /* SentenceCategoryCell.xib */; };
 		5548C88121A51A98007EA0CB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88021A51A98007EA0CB /* MainVC.swift */; };
 		5548C88321A522A9007EA0CB /* UIApplication+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88221A522A9007EA0CB /* UIApplication+Ext.swift */; };
 		5548C88621A522DA007EA0CB /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88521A522DA007EA0CB /* TitleView.swift */; };
@@ -66,6 +69,9 @@
 		553414BF21A7C1E800C4E6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		553414C121A7C1EC00C4E6B9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		553414C221A7C78F00C4E6B9 /* TimeInterval+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Ext.swift"; sourceTree = "<group>"; };
+		553414C421A8388400C4E6B9 /* SentenceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategory.swift; sourceTree = "<group>"; };
+		553414C621A839D300C4E6B9 /* SentenceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategoryCell.swift; sourceTree = "<group>"; };
+		553414C721A839D300C4E6B9 /* SentenceCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentenceCategoryCell.xib; sourceTree = "<group>"; };
 		5548C88021A51A98007EA0CB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		5548C88221A522A9007EA0CB /* UIApplication+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Ext.swift"; sourceTree = "<group>"; };
 		5548C88521A522DA007EA0CB /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -236,6 +242,8 @@
 				5548C88521A522DA007EA0CB /* TitleView.swift */,
 				55EB2DF421A67F9500D41A01 /* MainStatsView.swift */,
 				55EB2DF221A6725C00D41A01 /* RoundedView.swift */,
+				553414C621A839D300C4E6B9 /* SentenceCategoryCell.swift */,
+				553414C721A839D300C4E6B9 /* SentenceCategoryCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				55EB2DFC21A683F200D41A01 /* Languages.swift */,
+				553414C421A8388400C4E6B9 /* SentenceCategory.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 				5584D6A62193FF7C005150EC /* Assets.xcassets in Resources */,
 				5584D6B8219445FF005150EC /* words.txt in Resources */,
 				553414BE21A7C1E800C4E6B9 /* Localizable.strings in Resources */,
+				553414C921A839D300C4E6B9 /* SentenceCategoryCell.xib in Resources */,
 				5584D6A42193FF7B005150EC /* Main.storyboard in Resources */,
 				5511DB8B21A15BF60028F219 /* sentences.json in Resources */,
 				5584D6BC21944B3C005150EC /* words2.txt in Resources */,
@@ -384,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
+				553414C821A839D300C4E6B9 /* SentenceCategoryCell.swift in Sources */,
 				55F743CC2198149200C965A4 /* Sentence.swift in Sources */,
 				55EB2DFA21A681BE00D41A01 /* StatsService.swift in Sources */,
 				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
@@ -397,6 +408,7 @@
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
 				5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */,
 				55EB2DF521A67F9500D41A01 /* MainStatsView.swift in Sources */,
+				553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */,
 				55EB2DF321A6725C00D41A01 /* RoundedView.swift in Sources */,
 				5511DB7821A13F230028F219 /* SentenceService.swift in Sources */,
 				5584D6B5219401DD005150EC /* WordListener.swift in Sources */,

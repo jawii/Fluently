@@ -8,12 +8,7 @@
 
 import Foundation
 
-enum SentenceCategory: String, CaseIterable {
-    case smallTalk = "smallTalk"
-    case jobInterview = "jobInterview"
-    case restaurant = "restaurant"
-    case travelling = "travelling"
-}
+
 
 class SentenceService {
     

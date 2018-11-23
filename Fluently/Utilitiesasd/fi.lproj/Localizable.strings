@@ -5,8 +5,13 @@
   Created by Jaakko Kenttä on 23/11/2018.
   Copyright © 2018 Jaakko Kenttä. All rights reserved.
 */
-
+// KIELET
 "Finnish" = "Suomi";
 "English(UK)" = "Englanti(UK)";
 "English(US" = "Englanti(US)";
+
+// Random
 "words" = "sanaa";
+
+// Sentence Cateogries
+"Small Talk" = "Jutustelu";

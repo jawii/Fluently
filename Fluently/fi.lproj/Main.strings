@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "Sentences"; ObjectID = "4AV-A1-puu"; */
+"4AV-A1-puu.text" = "Lauseet";
+
+/* Class = "UILabel"; text = "Small Talk"; ObjectID = "4Ii-54-gne"; */
+"4Ii-54-gne.text" = "Small Talk";
+
+/* Class = "UILabel"; text = "SAY IT"; ObjectID = "8Ix-eH-lDI"; */
+"8Ix-eH-lDI.text" = "SAY IT";
+
+/* Class = "UILabel"; text = "Currently Learning"; ObjectID = "ASk-Sr-knY"; */
+"ASk-Sr-knY.text" = "Nyt opiskellaan";
+
+/* Class = "UITextView"; text = "TEXT TO SAY"; ObjectID = "AxW-Me-HSJ"; */
+"AxW-Me-HSJ.text" = "TEXT TO SAY";
+
+/* Class = "UILabel"; text = "20 min"; ObjectID = "IQZ-vc-8Pm"; */
+"IQZ-vc-8Pm.text" = "20 min";
+
+/* Class = "UILabel"; text = "Total"; ObjectID = "QqM-IE-2T7"; */
+"QqM-IE-2T7.text" = "Yhteensä";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RSu-pa-LHk"; */
+"RSu-pa-LHk.text" = "Label";
+
+/* Class = "UILabel"; text = "20 words"; ObjectID = "SLj-qJ-x0c"; */
+"SLj-qJ-x0c.text" = "20 words";
+
+/* Class = "UITabBarItem"; title = "Item 2"; ObjectID = "VdI-KL-Qfh"; */
+"VdI-KL-Qfh.title" = "Item 2";
+
+/* Class = "UILabel"; text = "skip"; ObjectID = "WlA-m6-ER1"; */
+"WlA-m6-ER1.text" = "skip";
+
+/* Class = "UILabel"; text = "Practice sayings by category"; ObjectID = "dGC-3p-dG1"; */
+"dGC-3p-dG1.text" = "Harjoittele lauseita aihealueittain.";
+
+/* Class = "UILabel"; text = "1h 10 min"; ObjectID = "elW-cI-60l"; */
+"elW-cI-60l.text" = "1h 10 min";
+
+/* Class = "UILabel"; text = "400 words "; ObjectID = "kRL-Gy-hhX"; */
+"kRL-Gy-hhX.text" = "400 words ";
+
+/* Class = "UILabel"; text = "English(US)"; ObjectID = "oMe-fS-EhZ"; */
+"oMe-fS-EhZ.text" = "English(US)";
+
+/* Class = "UILabel"; text = "START"; ObjectID = "oUs-TZ-AfM"; */
+"oUs-TZ-AfM.text" = "START";
+
+/* Class = "UITableViewSection"; headerTitle = "FLUENTLY"; ObjectID = "obP-Wr-4wJ"; */
+"obP-Wr-4wJ.headerTitle" = "FLUENTLY";
+
+/* Class = "UITabBarItem"; title = "Item"; ObjectID = "qEB-gN-U6W"; */
+"qEB-gN-U6W.title" = "Item";
+
+/* Class = "UIButton"; normalTitle = "View All"; ObjectID = "sRZ-TD-7wB"; */
+"sRZ-TD-7wB.normalTitle" = "Näytä kaikki";
+
+/* Class = "UILabel"; text = "say it"; ObjectID = "tPA-D7-02x"; */
+"tPA-D7-02x.text" = "say it";
+
+/* Class = "UIButton"; normalTitle = "Change"; ObjectID = "tcD-67-hfT"; */
+"tcD-67-hfT.normalTitle" = "Vaihda";
+
+/* Class = "UILabel"; text = "Statistic"; ObjectID = "tvG-z3-Iae"; */
+"tvG-z3-Iae.text" = "Tilastot";

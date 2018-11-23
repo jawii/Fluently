@@ -28,13 +28,18 @@ class MainStatsView: RoundedView {
         flag.image = UIImage(named: currentLang.rawValue)
         
         let stats = StatsValues(service: statsService)
+        
+        let wordEnd = NSLocalizedString("words", comment: "")
+        
         let currentLangStats = stats.getStatsForLang(currentLang)
-        currentWordAmountLabel.text = "\(currentLangStats.words) words"
-        currentTimeLabel.text = "\(currentLangStats.time) seconds"
+        let currentTime = TimeInterval(currentLangStats.time)
+        currentWordAmountLabel.text = "\(currentLangStats.words) \(wordEnd)"
+        currentTimeLabel.text = currentTime.convertToStringDuration()
         
         let totalStats = stats.getTotalStats()
-        totalWordAmountLabel.text = "\(totalStats.words) words"
-        totalTimeLabel.text = "\(totalStats.time) seconds"
+        let totalTime = TimeInterval(totalStats.time)
+        totalWordAmountLabel.text = "\(totalStats.words) \(wordEnd)"
+        totalTimeLabel.text = totalTime.convertToStringDuration()
     }
 
 }

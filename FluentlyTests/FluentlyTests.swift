@@ -7,11 +7,14 @@
 //
 
 import XCTest
+@testable import Fluently
+
 
 class FluentlyTests: XCTestCase {
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        // get all images
+        
     }
 
     override func tearDown() {

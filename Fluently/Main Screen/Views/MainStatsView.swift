@@ -9,7 +9,7 @@
 import UIKit
 
 class MainStatsView: RoundedView {
-    
+        
     // MARK:- Outlets
     @IBOutlet private weak var flag: UIImageView!
     @IBOutlet private weak var currentWordAmountLabel: UILabel!
@@ -20,11 +20,21 @@ class MainStatsView: RoundedView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupView()
     }
     
-    func setupView() {
+    func setupView(forService statsService: StatsService) {
+        let currentLang = LanguageService.shared.learningLanguage
         
+        flag.image = UIImage(named: currentLang.rawValue)
+        
+        let stats = StatsValues(service: statsService)
+        let currentLangStats = stats.getStatsForLang(currentLang)
+        currentWordAmountLabel.text = "\(currentLangStats.words) words"
+        currentTimeLabel.text = "\(currentLangStats.time) seconds"
+        
+        let totalStats = stats.getTotalStats()
+        totalWordAmountLabel.text = "\(totalStats.words) words"
+        totalTimeLabel.text = "\(totalStats.time) seconds"
     }
 
 }

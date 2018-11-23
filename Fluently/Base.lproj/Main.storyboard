@@ -64,7 +64,7 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="ZdG-I1-x33">
                                                                             <rect key="frame" x="0.0" y="1.5" width="73.5" height="59.5"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="usaflag" translatesAutoresizingMaskIntoConstraints="NO" id="waH-GC-Qui">
+                                                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="en_US" translatesAutoresizingMaskIntoConstraints="NO" id="waH-GC-Qui">
                                                                                     <rect key="frame" x="9" y="0.0" width="55" height="41"/>
                                                                                 </imageView>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English(US)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oMe-fS-EhZ">
@@ -114,7 +114,7 @@
                                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PAF-Le-Xpi">
                                                                             <rect key="frame" x="0.0" y="0.0" width="50.5" height="62"/>
                                                                             <subviews>
-                                                                                <imageView userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="usaflag" translatesAutoresizingMaskIntoConstraints="NO" id="niY-jB-DTn">
+                                                                                <imageView userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="en_US" translatesAutoresizingMaskIntoConstraints="NO" id="niY-jB-DTn">
                                                                                     <rect key="frame" x="14.5" y="0.0" width="22" height="18"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="width" constant="22" id="9HG-hE-Sf9"/>
@@ -229,6 +229,11 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" image="tabbarlearn" id="qEB-gN-U6W"/>
+                    <connections>
+                        <outlet property="currentLanguageFlagImageView" destination="waH-GC-Qui" id="EOO-VL-8Sr"/>
+                        <outlet property="learningLangNameLabel" destination="oMe-fS-EhZ" id="GOc-if-uVs"/>
+                        <outlet property="statsView" destination="3HK-Cf-VWL" id="tgo-6a-1cb"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wsP-MG-tad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -385,13 +390,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="en_US" width="55.5" height="41"/>
         <image name="settings" width="25" height="26"/>
         <image name="skipIcon" width="23" height="13"/>
         <image name="speak" width="28" height="24"/>
         <image name="tabbarlearn" width="29" height="27"/>
         <image name="totaltime" width="25.5" height="24"/>
         <image name="totalwords" width="28.5" height="23"/>
-        <image name="usaflag" width="55.5" height="41"/>
         <namedColor name="Coral">
             <color red="1" green="0.53333333333333333" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

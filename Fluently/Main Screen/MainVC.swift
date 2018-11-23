@@ -10,7 +10,12 @@ import UIKit
 
 class MainVC: UITableViewController {
     
+    @IBOutlet weak var statsView: MainStatsView!
+    @IBOutlet weak var currentLanguageFlagImageView: UIImageView!
+    @IBOutlet weak var learningLangNameLabel: UILabel!
+    
     private let titleHeight:CGFloat = 100
+    let statsService = StatsService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +24,9 @@ class MainVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tableView.contentInset = UIEdgeInsets(top: -120, left: 0, bottom: 0, right: 0)
+        statsView.setupView(forService: statsService)
+        currentLanguageFlagImageView.image = UIImage(named: LanguageService.shared.learningLanguage.rawValue)
+        learningLangNameLabel.text = LanguageService.shared.getNameForLanguage(LanguageService.shared.learningLanguage)
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

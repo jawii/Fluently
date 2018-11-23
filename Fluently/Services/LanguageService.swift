@@ -12,6 +12,17 @@ class LanguageService {
     
     static let shared = LanguageService()
     
-    var appLanguage = LearningLanguage.finnish
-    var learningLanguage = LearningLanguage.englishUK
+    var appLanguage = LearningLanguage.englishUS
+    var learningLanguage = LearningLanguage.finnish
+    
+    func getNameForLanguage(_ lang: LearningLanguage) -> String {
+        switch lang {
+        case .englishUK:
+            return NSLocalizedString("English(UK)", comment: "Language name")
+        case .englishUS:
+            return NSLocalizedString("English(US)", comment: "Language name")
+        case .finnish:
+            return NSLocalizedString("Finnish", comment: "Language name")
+        }
+    }
 }

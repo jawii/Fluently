@@ -6,11 +6,43 @@
 //  Copyright © 2018 Jaakko Kenttä. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum SentenceCategory: String, CaseIterable {
     case smallTalk = "smallTalk"
     case jobInterview = "jobInterview"
     case restaurant = "restaurant"
     case travelling = "travelling"
+}
+
+extension SentenceCategory {
+    func getCategoryName() -> String {
+        switch self {
+        case .smallTalk:
+            return NSLocalizedString("Small Talk", comment: "")
+        case .jobInterview:
+            return NSLocalizedString("Job Interview", comment: "")
+        case .restaurant:
+            return NSLocalizedString("Restaurant", comment: "")
+        case .travelling:
+            return NSLocalizedString("Travelling", comment: "")
+        }
+    }
+    
+    func getCategoryImage() -> UIImage {
+        switch self {
+        case .smallTalk:
+            let image = #imageLiteral(resourceName: "smallTalk")
+            return image
+        case .jobInterview:
+            let image = #imageLiteral(resourceName: "jobinterview")
+            return image
+        case .restaurant:
+            let image = #imageLiteral(resourceName: "restaurant")
+            return image
+        case .travelling:
+            let image = #imageLiteral(resourceName: "travelling")
+            return image
+        }
+    }
 }

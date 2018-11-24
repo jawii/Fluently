@@ -28,6 +28,7 @@ class MainVC: UITableViewController {
         sentenceCollectionView.delegate = self
         sentenceCollectionView.register(SentenceCategoryCell.self, forCellWithReuseIdentifier: "SentenceCategoryCell")
         sentenceCollectionView.register(UINib(nibName: "SentenceCategoryCell", bundle: nil), forCellWithReuseIdentifier: "SentenceCategoryCell")
+        sentenceCollectionView.layer.masksToBounds = false // prevent contentview shadows clipping
         sentenceCollectionView.reloadData()
     }
     

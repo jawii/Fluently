@@ -28,7 +28,7 @@ class MainVC: UITableViewController {
         sentenceCollectionView.delegate = self
         sentenceCollectionView.register(SentenceCategoryCell.self, forCellWithReuseIdentifier: "SentenceCategoryCell")
         sentenceCollectionView.register(UINib(nibName: "SentenceCategoryCell", bundle: nil), forCellWithReuseIdentifier: "SentenceCategoryCell")
-        sentenceCollectionView.layer.masksToBounds = false // prevent contentview shadows clipping
+        sentenceCollectionView.layer.masksToBounds = false // prevent contentview shadow clipping
         sentenceCollectionView.reloadData()
     }
     
@@ -37,6 +37,19 @@ class MainVC: UITableViewController {
         statsView.setupView(forService: statsService)
         currentLanguageFlagImageView.image = UIImage(named: LanguageService.shared.learningLanguage.rawValue)
         learningLangNameLabel.text = LanguageService.shared.getNameForLanguage(LanguageService.shared.learningLanguage)
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "changeLanguage", let destVC = segue.destination as? LanguageListVC  {
+            destVC.service = statsService
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

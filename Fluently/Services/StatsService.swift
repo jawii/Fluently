@@ -9,14 +9,13 @@
 import Foundation
 
 
+typealias Statistics = (words: Int, time: Int)
 
 /// Returns Statistics for Current language
 struct StatsValues {
     
     var service: StatsService
-    
-    typealias Statistics = (words: Int, time: Int)
-    
+
     func getStatsForLang(_ language: LearningLanguage) -> Statistics {
         let stats = service.languageStats.filter { $0.languageName == language.rawValue }.first!
         return (words: stats.wordsSaid, time: stats.secondsPlayed)

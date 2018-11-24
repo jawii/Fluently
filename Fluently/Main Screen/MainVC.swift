@@ -22,7 +22,6 @@ class MainVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UIApplication.shared.statusBarView?.backgroundColor = GlobalConstants.Color.havelockBlue
         
         sentenceCollectionView.dataSource = self
         sentenceCollectionView.delegate = self
@@ -39,6 +38,7 @@ class MainVC: UITableViewController {
         learningLangNameLabel.text = LanguageService.shared.getNameForLanguage(LanguageService.shared.learningLanguage)
         
         self.navigationController?.isNavigationBarHidden = true
+        UIApplication.shared.statusBarView?.backgroundColor = GlobalConstants.Color.havelockBlue
     }
     
     override func viewWillDisappear(_ animated: Bool) {

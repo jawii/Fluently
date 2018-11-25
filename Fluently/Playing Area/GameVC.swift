@@ -26,6 +26,7 @@ class GameVC: UIViewController {
     
     
     var listener: WordListener!
+    var category: SentenceCategory!
     
     var sentences = [Sentence]()
     var currentSentence: Sentence! {
@@ -45,10 +46,9 @@ class GameVC: UIViewController {
         
         synth.delegate = self
         
-        
         let service = SentenceService()
         let learningLang = LanguageService.shared.learningLanguage
-        sentences = service.fetchSentences(forLanguage: learningLang, andForCategory: .smallTalk).shuffled()
+        sentences = service.fetchSentences(forLanguage: learningLang, andForCategory: self.category).shuffled()
 
         
         currentSentence = sentences.removeFirst()
@@ -78,6 +78,7 @@ class GameVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
         translatedTextLabel.layer.cornerRadius = 5
         translatedTextLabel.layer.borderWidth = 1
         translatedTextLabel.layer.borderColor = UIColor.darkGray.cgColor

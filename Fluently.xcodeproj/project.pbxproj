@@ -15,6 +15,8 @@
 		5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8E21A272110028F219 /* UIButton+Ext.swift */; };
 		5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB9021A2FD3B0028F219 /* LanguageService.swift */; };
 		551BD75B21AA70FC0022275D /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */; };
+		551BD75F21AA73030022275D /* SentenceCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BD75E21AA73030022275D /* SentenceCategoryVC.swift */; };
+		551BD76121AA78670022275D /* SentenceCategoryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BD76021AA78670022275D /* SentenceCategoryTableCell.swift */; };
 		553414BE21A7C1E800C4E6B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 553414C021A7C1E800C4E6B9 /* Localizable.strings */; };
 		553414C321A7C78F00C4E6B9 /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C221A7C78F00C4E6B9 /* TimeInterval+Ext.swift */; };
 		553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C421A8388400C4E6B9 /* SentenceCategory.swift */; };
@@ -68,6 +70,8 @@
 		5511DB8E21A272110028F219 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		5511DB9021A2FD3B0028F219 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
 		551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
+		551BD75E21AA73030022275D /* SentenceCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategoryVC.swift; sourceTree = "<group>"; };
+		551BD76021AA78670022275D /* SentenceCategoryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategoryTableCell.swift; sourceTree = "<group>"; };
 		553414BA21A7C0B100C4E6B9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Main.strings; sourceTree = "<group>"; };
 		553414BB21A7C0B100C4E6B9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		553414BF21A7C1E800C4E6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -168,9 +172,19 @@
 			path = LanguageChange;
 			sourceTree = "<group>";
 		};
+		551BD75D21AA72DA0022275D /* SentenceCategList */ = {
+			isa = PBXGroup;
+			children = (
+				551BD75E21AA73030022275D /* SentenceCategoryVC.swift */,
+				551BD76021AA78670022275D /* SentenceCategoryTableCell.swift */,
+			);
+			path = SentenceCategList;
+			sourceTree = "<group>";
+		};
 		554858CD21A9145E00FFEA30 /* TableViewsVCs */ = {
 			isa = PBXGroup;
 			children = (
+				551BD75D21AA72DA0022275D /* SentenceCategList */,
 				551BD75C21AA72B20022275D /* LanguageChange */,
 			);
 			path = TableViewsVCs;
@@ -426,11 +440,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551BD76121AA78670022275D /* SentenceCategoryTableCell.swift in Sources */,
 				554858CF21A9147B00FFEA30 /* LanguageListVC.swift in Sources */,
 				551BD75B21AA70FC0022275D /* RoundedShadowButton.swift in Sources */,
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
 				553414C821A839D300C4E6B9 /* SentenceCategoryCell.swift in Sources */,
 				55F743CC2198149200C965A4 /* Sentence.swift in Sources */,
+				551BD75F21AA73030022275D /* SentenceCategoryVC.swift in Sources */,
 				55EB2DFA21A681BE00D41A01 /* StatsService.swift in Sources */,
 				55BE18362195DEB7003D2CCB /* String+Ext.swift in Sources */,
 				55BE18382195DEDB003D2CCB /* NSMutString+Ext.swift in Sources */,
@@ -668,7 +684,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaakkokentta.fluently.Fluently;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -686,7 +702,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jaakkokentta.fluently.Fluently;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -49,7 +49,6 @@ class LangTableViewCell: UITableViewCell {
         timePracticedLabel.text = currentTime.convertToStringDuration()
         
         self.isSelectedLanguage = LanguageService.shared.learningLanguage == language
-        print(isSelectedLanguage)
         if isSelectedLanguage { self.setSelected() } else { deselect() }
     }
     @IBAction func selectionBtnTapHandler(_ sender: Any?) {

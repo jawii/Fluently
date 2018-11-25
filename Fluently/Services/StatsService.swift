@@ -18,7 +18,15 @@ struct StatsValues {
 
     func getStatsForLang(_ language: LearningLanguage) -> Statistics {
         let stats = service.languageStats.filter { $0.languageName == language.rawValue }.first!
-        return (words: stats.wordsSaid, time: stats.secondsPlayed)
+        
+        
+        // Go trough categories
+        var wordCount = 0
+        for category in SentenceCategory.allCases {
+            wordCount += stats.wordsSaid[category.rawValue] ?? 0
+        }
+        
+        return (words: wordCount, time: stats.secondsPlayed)
     }
     func getTotalStats() -> Statistics {
         var returnStats: Statistics = (words: 0, time: 0)
@@ -29,15 +37,26 @@ struct StatsValues {
         }
         return returnStats
     }
+    
+    func wordsForCategory(_ category: SentenceCategory) -> Int {
+        var wordCount = 0
+        for language in service.languageStats {
+            let langWords = language.wordsSaid[category.rawValue] ?? 0
+            wordCount += langWords
+        }
+        return wordCount
+    }
 }
 
 struct LanguageStats: Codable {
     var languageName: String
-    var wordsSaid: Int
+    var wordsSaid: [String: Int]
     var secondsPlayed: Int
     
-    mutating func addStats(words: Int, seconds: Int) {
-        self.wordsSaid += words
+    mutating func addStats(forCategory category: SentenceCategory, words: Int, seconds: Int) {
+        let dictKey = category.rawValue
+        let oldValue = self.wordsSaid[dictKey]
+        self.wordsSaid[dictKey] = (oldValue ?? 0) + words
         self.secondsPlayed += seconds
     }
 }
@@ -62,7 +81,7 @@ class StatsService {
     private func createEmptyStatisticFile() -> [LanguageStats] {
         var emptylanguageStats = [LanguageStats]()
         LearningLanguage.allCases.forEach {
-            let language = LanguageStats(languageName: $0.rawValue, wordsSaid: 0, secondsPlayed: 0)
+            let language = LanguageStats(languageName: $0.rawValue, wordsSaid: [String: Int](), secondsPlayed: 0)
             emptylanguageStats.append(language)
         }
         return emptylanguageStats

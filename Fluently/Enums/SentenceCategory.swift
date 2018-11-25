@@ -45,4 +45,21 @@ extension SentenceCategory {
             return image
         }
     }
+    
+    func getDetailText() -> String {
+        let returnValue: String
+        switch self {
+        case .smallTalk:
+            returnValue = NSLocalizedString("Basic Sentences.", comment: "")
+        case .jobInterview:
+            returnValue = NSLocalizedString("Get the Job!", comment: "")
+        case .restaurant:
+            returnValue = NSLocalizedString("Pizza time.", comment: "")
+        case .travelling:
+            returnValue = NSLocalizedString("Around the world.", comment: "")
+        }
+        #warning("Add localized strings")
+        
+        return returnValue
+    }
 }

@@ -48,6 +48,7 @@ class MainVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changeLanguage", let destVC = segue.destination as? LanguageListVC  {
+            destVC.hidesBottomBarWhenPushed = true
             destVC.service = statsService
         }
     }
@@ -85,8 +86,16 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.setupView(forCategory: SentenceCategory.allCases[indexPath.row])
     
         return cell
-        
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if let gameVC = storyBoard.instantiateViewController(withIdentifier: "GameVC") as? GameVC {
+            let category = SentenceCategory.allCases[indexPath.row]
+            gameVC.category = category
+            gameVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(gameVC, animated: true)
+        }
+    }
+
 }

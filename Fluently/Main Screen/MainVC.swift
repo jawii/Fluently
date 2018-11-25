@@ -51,6 +51,11 @@ class MainVC: UITableViewController {
             destVC.hidesBottomBarWhenPushed = true
             destVC.service = statsService
         }
+        
+        if segue.identifier == "categoryList", let destVC = segue.destination as? SentenceCategoryVC {
+            destVC.hidesBottomBarWhenPushed = true
+            destVC.service = statsService
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

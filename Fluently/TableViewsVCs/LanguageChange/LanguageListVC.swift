@@ -51,12 +51,36 @@ extension LanguageListVC: UITableViewDataSource, UITableViewDelegate {
         let stats = statistics.getStatsForLang(language)
         
         cell.configureCell(forLanguage: language, stats: stats)
+        cell.delegate = self
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
         return 140
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        return
+    }
+}
+
+extension LanguageListVC: LanguageCellDelegate {
+    func appLanguageDidSet() {
+        // go trough tableview cells and deselect languages
+        var indexPaths = [IndexPath]()
+        for i in  0 ... LearningLanguage.allCases.count - 1{
+            let indexPath = IndexPath(row: i, section: 0)
+            indexPaths.append(indexPath)
+        }        
+        indexPaths.forEach { ip in
+            if let cell = tableview.cellForRow(at: ip) as? LangTableViewCell {
+                if cell.language != LanguageService.shared.learningLanguage {
+                    cell.deselect()
+                }
+            }
+        }
+ 
     }
     
     

@@ -10,10 +10,27 @@ import Foundation
 
 class LanguageService {
     
+    private let LEARNING_LANGUAGE_KEY = "fluently.currentLearningLanguage"
+    
     static let shared = LanguageService()
     
     var appLanguage = LearningLanguage.englishUS
-    var learningLanguage = LearningLanguage.finnish
+    
+    
+    var learningLanguage: LearningLanguage {
+        get {
+            var returnValue: LearningLanguage
+            if let langRawValue = UserDefaults.standard.string(forKey: LEARNING_LANGUAGE_KEY)  {
+                returnValue = LearningLanguage(rawValue: langRawValue)!
+            } else {
+                returnValue = LearningLanguage.finnish
+            }
+            return returnValue
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: LEARNING_LANGUAGE_KEY)
+        }
+    }
     
     func getNameForLanguage(_ lang: LearningLanguage) -> String {
         switch lang {

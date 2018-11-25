@@ -14,6 +14,7 @@
 		5511DB8D21A263220028F219 /* SentenceSaying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8C21A263220028F219 /* SentenceSaying.swift */; };
 		5511DB8F21A272110028F219 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB8E21A272110028F219 /* UIButton+Ext.swift */; };
 		5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5511DB9021A2FD3B0028F219 /* LanguageService.swift */; };
+		551BD75B21AA70FC0022275D /* RoundedShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */; };
 		553414BE21A7C1E800C4E6B9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 553414C021A7C1E800C4E6B9 /* Localizable.strings */; };
 		553414C321A7C78F00C4E6B9 /* TimeInterval+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C221A7C78F00C4E6B9 /* TimeInterval+Ext.swift */; };
 		553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C421A8388400C4E6B9 /* SentenceCategory.swift */; };
@@ -66,6 +67,7 @@
 		5511DB8C21A263220028F219 /* SentenceSaying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceSaying.swift; sourceTree = "<group>"; };
 		5511DB8E21A272110028F219 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
 		5511DB9021A2FD3B0028F219 /* LanguageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageService.swift; sourceTree = "<group>"; };
+		551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedShadowButton.swift; sourceTree = "<group>"; };
 		553414BA21A7C0B100C4E6B9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Main.strings; sourceTree = "<group>"; };
 		553414BB21A7C0B100C4E6B9 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		553414BF21A7C1E800C4E6B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -149,13 +151,29 @@
 			path = Sentences;
 			sourceTree = "<group>";
 		};
-		554858CD21A9145E00FFEA30 /* TableViews */ = {
+		551BD75921AA70E30022275D /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		551BD75C21AA72B20022275D /* LanguageChange */ = {
 			isa = PBXGroup;
 			children = (
 				554858CE21A9147B00FFEA30 /* LanguageListVC.swift */,
 				554858D021A9235200FFEA30 /* LangTableViewCell.swift */,
 			);
-			path = TableViews;
+			path = LanguageChange;
+			sourceTree = "<group>";
+		};
+		554858CD21A9145E00FFEA30 /* TableViewsVCs */ = {
+			isa = PBXGroup;
+			children = (
+				551BD75C21AA72B20022275D /* LanguageChange */,
+			);
+			path = TableViewsVCs;
 			sourceTree = "<group>";
 		};
 		5548C88421A522C0007EA0CB /* Main Screen */ = {
@@ -192,10 +210,11 @@
 				5584D6AA2193FF7C005150EC /* Info.plist */,
 				5584D6A22193FF7B005150EC /* Main.storyboard */,
 				5548C88421A522C0007EA0CB /* Main Screen */,
-				554858CD21A9145E00FFEA30 /* TableViews */,
+				554858CD21A9145E00FFEA30 /* TableViewsVCs */,
 				55EB2DF621A6810300D41A01 /* Playing Area */,
 				55F743CA2198148200C965A4 /* Model */,
 				55EB2DFB21A683D900D41A01 /* Enums */,
+				551BD75921AA70E30022275D /* Custom Views */,
 				5584D6B6219445F0005150EC /* Resources */,
 				55EB2DF821A6819F00D41A01 /* Services */,
 				55BE18322195DE99003D2CCB /* Extensions */,
@@ -408,6 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				554858CF21A9147B00FFEA30 /* LanguageListVC.swift in Sources */,
+				551BD75B21AA70FC0022275D /* RoundedShadowButton.swift in Sources */,
 				5584D6BA21944675005150EC /* WordFetcher.swift in Sources */,
 				553414C821A839D300C4E6B9 /* SentenceCategoryCell.swift in Sources */,
 				55F743CC2198149200C965A4 /* Sentence.swift in Sources */,

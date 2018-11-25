@@ -19,4 +19,5 @@
 "Restaurant" = "Ravintola";
 "Travelling" = "Matkustelu";
 "Change Learning Language" = "Vaihda opiskeltava kieli";
-"SELECT" = "Valitse";
+"SELECT" = "VALITSE";
+"SELECTED" = "VALITTU";

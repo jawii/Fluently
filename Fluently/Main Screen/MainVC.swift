@@ -23,6 +23,7 @@ class MainVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         sentenceCollectionView.dataSource = self
         sentenceCollectionView.delegate = self
         sentenceCollectionView.register(SentenceCategoryCell.self, forCellWithReuseIdentifier: "SentenceCategoryCell")
@@ -102,5 +103,10 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
             self.navigationController?.pushViewController(gameVC, animated: true)
         }
     }
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView == self.tableView, scrollView.contentOffset.y <= 0 {
+//            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//        }
+//    }
 
 }

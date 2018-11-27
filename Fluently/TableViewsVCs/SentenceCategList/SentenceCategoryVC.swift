@@ -62,6 +62,7 @@ extension SentenceCategoryVC: SentenceCategoryTableViewCellDelegate {
         if let gameVC = storyBoard.instantiateViewController(withIdentifier: "GameVC") as? GameVC {
             gameVC.category = category
             gameVC.hidesBottomBarWhenPushed = true
+            gameVC.service = service
             self.navigationController?.pushViewController(gameVC, animated: true)
         }
     }

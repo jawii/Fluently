@@ -23,7 +23,9 @@ class GameVC: UIViewController {
     @IBOutlet weak var saySentenceLabel: UILabel!
     
     @IBOutlet weak var skipSentenceButton: UIButton!
+    @IBOutlet weak var wordsSaidLabel: UILabel!
     
+    var service: StatsService!
     
     var listener: WordListener!
     var category: SentenceCategory!
@@ -37,9 +39,21 @@ class GameVC: UIViewController {
     }
     // Keeps track of said words
     var wordsHeared = [String]()
+
+    // Keep track of how many sentences have said
+    var sentencesSaid = 0
+    var maximumSentences = 5
+    
+    var correctWordsAmount = 0  {
+        didSet {
+            let suffix = NSLocalizedString("words said", comment: "")
+            wordsSaidLabel.text = "\(correctWordsAmount) \(suffix)"
+        }
+    }
     
     // Synthesizer for speaking
     let synth = AVSpeechSynthesizer()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +69,7 @@ class GameVC: UIViewController {
         currentSentence.delegate = self
         currentSentence.start()
         
-        if LanguageService.shared.appLanguage != learningLang {
+        if currentSentence.translation != currentSentence.initialSentence {
             translatedTextLabel.text = currentSentence.translation
         } else {
             translatedTextLabel.isHidden = true
@@ -82,6 +96,12 @@ class GameVC: UIViewController {
         translatedTextLabel.layer.cornerRadius = 5
         translatedTextLabel.layer.borderWidth = 1
         translatedTextLabel.layer.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listener.stop()
+        synth.stopSpeaking(at: .immediate)
     }
     
     @objc func wordTapped(_ tapGesture: UITapGestureRecognizer) {
@@ -147,35 +167,51 @@ extension GameVC: SentenceDelegate {
     }
     
     func textSayingComplete() {
-        print("Word complete!")
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-//            self.listener.stop()
-            self.currentSentence = self.sentences.removeFirst()
-            self.currentSentence.delegate = self
-            self.currentSentence.start()
+        sentencesSaid += 1
+        if sentencesSaid < maximumSentences {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                //            self.listener.stop()
+                self.currentSentence = self.sentences.removeFirst()
+                self.currentSentence.delegate = self
+                self.currentSentence.start()
+            }
+        } else {
+            // Game End
+            let lang = LanguageService.shared.learningLanguage
+            service.addStats(forLanguage: lang, andCategory: category, words: correctWordsAmount, seconds: 5)
+            
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }
 
 extension GameVC: WordListenerDelegate {
     func wordsHeared(word: String) {
-//        print("HEARED: \(word)")
         
-        if wordsHeared.last != word {
+        let lastWord = wordsHeared.last
+        let secondLast: String?
+        if wordsHeared.count >= 2 {
+            secondLast = wordsHeared[wordsHeared.count - 2]
+        } else {
+            secondLast = nil
+        }
+        
+        if lastWord != word && secondLast != word {
             wordsHeared.append(word.lowercased())
-            _ = currentSentence.said(word: word)
+            let wasCorrect = currentSentence.said(word: word)
+            if wasCorrect { correctWordsAmount += 1 }
+            
             recordButtonView.shootWord(word: word.lowercased())
         }
     }
     
     func recordinStarted() {
-        recordButtonBottomLabel.text = "RECORDING"
+        recordButtonBottomLabel.text = NSLocalizedString("RECORDING", comment: "")
         recordButtonBottomLabel.textColor = GlobalConstants.Color.coral
         recordButtonView.recordingStarted()
     }
     func recordingEnded() {
-        recordButtonBottomLabel.text = "START"
+        recordButtonBottomLabel.text = NSLocalizedString("START", comment: "")
         recordButtonBottomLabel.textColor = GlobalConstants.Color.havelockBlue
         recordButtonView.recordingStopped()
     }

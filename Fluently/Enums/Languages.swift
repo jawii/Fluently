@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum LearningLanguage: String, CaseIterable {
+enum LearningLanguage: String, CaseIterable, Codable {
     case finnish = "fi_FI"
     case englishUK = "en_UK"
     case englishUS = "en_US"

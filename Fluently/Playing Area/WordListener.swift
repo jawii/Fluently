@@ -101,7 +101,8 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
         }
         
         recognitionRequest.shouldReportPartialResults = true
-        recognitionRequest.taskHint = .search
+        recognitionRequest.taskHint = .unspecified
+//        recognitionRequest.contextualStrings = strings
         
         recognitionTask = speechRegonizer.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
             
@@ -136,6 +137,7 @@ class WordListener: NSObject, SFSpeechRecognizerDelegate {
             if error != nil || isFinal {
                 print("End recording")
                 self.delegate?.recordingEnded()
+                
                 if let error = error {
                     print(error.localizedDescription)
                 }

@@ -13,6 +13,7 @@ class MainVC: UITableViewController {
     @IBOutlet weak var statsView: MainStatsView!
     @IBOutlet weak var currentLanguageFlagImageView: UIImageView!
     @IBOutlet weak var learningLangNameLabel: UILabel!
+    @IBOutlet weak var changeLanguageBtn: RoundedShadowButton!
     
     @IBOutlet weak var sentenceCollectionView: UICollectionView!
     
@@ -22,6 +23,11 @@ class MainVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Fit button titletext to available space
+        changeLanguageBtn.titleLabel?.numberOfLines = 1
+        changeLanguageBtn.titleLabel?.adjustsFontSizeToFitWidth = true
+        changeLanguageBtn.titleLabel?.lineBreakMode = .byClipping
         
         
         sentenceCollectionView.dataSource = self
@@ -100,6 +106,7 @@ extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
             let category = SentenceCategory.allCases[indexPath.row]
             gameVC.category = category
             gameVC.hidesBottomBarWhenPushed = true
+            gameVC.service = statsService
             self.navigationController?.pushViewController(gameVC, animated: true)
         }
     }

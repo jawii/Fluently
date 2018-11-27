@@ -17,7 +17,7 @@ struct StatsValues {
     var service: StatsService
 
     func getStatsForLang(_ language: LearningLanguage) -> Statistics {
-        let stats = service.languageStats.filter { $0.languageName == language.rawValue }.first!
+        let stats = service.languageStats.filter { $0.languageName == language }.first!
         
         
         // Go trough categories
@@ -48,16 +48,15 @@ struct StatsValues {
     }
 }
 
-struct LanguageStats: Codable {
-    var languageName: String
+class LanguageStats: Codable {
+    var languageName: LearningLanguage
     var wordsSaid: [String: Int]
     var secondsPlayed: Int
     
-    mutating func addStats(forCategory category: SentenceCategory, words: Int, seconds: Int) {
-        let dictKey = category.rawValue
-        let oldValue = self.wordsSaid[dictKey]
-        self.wordsSaid[dictKey] = (oldValue ?? 0) + words
-        self.secondsPlayed += seconds
+    init(languageName: LearningLanguage, wordsSaid: [String: Int], secondsPlayed: Int) {
+        self.languageName = languageName
+        self.wordsSaid = wordsSaid
+        self.secondsPlayed = secondsPlayed
     }
 }
 
@@ -78,10 +77,19 @@ class StatsService {
         }
     }
     
+    func addStats(forLanguage lang: LearningLanguage, andCategory category: SentenceCategory, words: Int, seconds: Int) {
+        
+        let language = self._languageStats.filter { $0.languageName == lang }.first!
+        let dictKey = category.rawValue
+        let oldValue = language.wordsSaid[dictKey]
+        language.wordsSaid[dictKey] = (oldValue ?? 0) + words
+        language.secondsPlayed += seconds
+    }
+    
     private func createEmptyStatisticFile() -> [LanguageStats] {
         var emptylanguageStats = [LanguageStats]()
         LearningLanguage.allCases.forEach {
-            let language = LanguageStats(languageName: $0.rawValue, wordsSaid: [String: Int](), secondsPlayed: 0)
+            let language = LanguageStats(languageName: $0, wordsSaid: [String: Int](), secondsPlayed: 0)
             emptylanguageStats.append(language)
         }
         return emptylanguageStats
@@ -97,7 +105,7 @@ class StatsService {
         return try! decoder.decode([LanguageStats].self, from: plistData)
     }
     
-    private func saveStats() {
+    func saveStats() {
         debugPrint("Saving Stats...")
         let encoder = PropertyListEncoder()
         if let data = try? encoder.encode(_languageStats)  {

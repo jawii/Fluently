@@ -25,6 +25,8 @@ class GameVC: UIViewController {
     @IBOutlet weak var skipSentenceButton: UIButton!
     @IBOutlet weak var wordsSaidLabel: UILabel!
     
+    @IBOutlet weak var counterView: CounterView!
+    
     var service: StatsService!
     
     var listener: WordListener!
@@ -35,6 +37,7 @@ class GameVC: UIViewController {
         didSet {
             currentSentence.start()
             translatedTextLabel.text = currentSentence.translation
+            counterView.addCount()
         }
     }
     // Keeps track of said words
@@ -46,8 +49,7 @@ class GameVC: UIViewController {
     
     var correctWordsAmount = 0  {
         didSet {
-            let suffix = NSLocalizedString("words said", comment: "")
-            wordsSaidLabel.text = "\(correctWordsAmount) \(suffix)"
+            wordsSaidLabel.text = String(correctWordsAmount)
         }
     }
     
@@ -59,6 +61,9 @@ class GameVC: UIViewController {
         super.viewDidLoad()
         
         synth.delegate = self
+        
+        // Create counterView
+        counterView.totalCount = 10
         
         let service = SentenceService()
         let learningLang = LanguageService.shared.learningLanguage
@@ -74,7 +79,7 @@ class GameVC: UIViewController {
         } else {
             translatedTextLabel.isHidden = true
         }
-        
+
         listener = WordListener(locale: Locale(identifier: learningLang.rawValue))
         listener.delegate = self
         
@@ -93,9 +98,10 @@ class GameVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
-        translatedTextLabel.layer.cornerRadius = 5
-        translatedTextLabel.layer.borderWidth = 1
-        translatedTextLabel.layer.borderColor = UIColor.darkGray.cgColor
+//        translatedTextLabel.layer.cornerRadius = 5
+//        translatedTextLabel.layer.borderWidth = 1
+//        translatedTextLabel.layer.borderColor = UIColor.darkGray.cgColor
+        self.title = category.getCategoryName()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,9 +149,9 @@ class GameVC: UIViewController {
         
         if synth.isSpeaking {
             synth.stopSpeaking(at: AVSpeechBoundary.immediate)
-            saySentenceLabel.text = "Say it"
+            saySentenceLabel.text = NSLocalizedString("Say it", comment: "")
         } else {
-            saySentenceLabel.text = "Saying..."
+            saySentenceLabel.text = NSLocalizedString("Saying...", comment: "")
             listener.stop()
             currentSentence.highlightWholeWord()
             sayWord(word: currentSentence.initialSentence)
@@ -177,6 +183,7 @@ extension GameVC: SentenceDelegate {
             }
         } else {
             // Game End
+            print("Game Complete!")
             let lang = LanguageService.shared.learningLanguage
             service.addStats(forLanguage: lang, andCategory: category, words: correctWordsAmount, seconds: 5)
             
@@ -225,10 +232,10 @@ extension GameVC: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         recordButtonView.enableRecording()
         sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
-        saySentenceLabel.text = "Say it"
+        saySentenceLabel.text = NSLocalizedString("Say it", comment: "")
     }
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        saySentenceLabel.text = "Say it"
+        saySentenceLabel.text = NSLocalizedString("Say it", comment: "")
         recordButtonView.enableRecording()
         sentenceToSayTextView.attributedText = currentSentence.sentenceAttrString
         

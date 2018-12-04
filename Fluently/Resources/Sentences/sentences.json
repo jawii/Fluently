@@ -84,7 +84,7 @@
   ],
   "jobInterview": [
     {
-      "fi_FI": "Hyvää huomenta. Nimeni on Susan ja haluan kiittää teitä tästä tilaisuudesta.",
+      "fi_FI": "Hyvää huomenta. Nimeni on Susanna ja haluan kiittää teitä tästä tilaisuudesta.",
       "en_UK": "Good morning. My name is Susan and I want to thank you for this opportunity.",
       "en_US": "Good morning. My name is Susan and I want to thank you for this opportunity.",
       "sv_SE": "",
@@ -92,7 +92,7 @@
       "de": ""
     },
     {
-      "fi_FI": "Hei. Olen Jack ja minulle on ilo olla täällä.",
+      "fi_FI": "Hei. Olen Jaakko ja minulle on ilo olla täällä.",
       "en_UK": "Hello, my name is Jack and it's pleasure for me to be here.",
       "en_US": "Hello, my name is Jack and it's pleasure for me to be here.",
       "sv_SE": "",
@@ -116,7 +116,7 @@
       "de": ""
     },
     {
-      "fi_FI": "Terve. Nimeni on Mike. Kiitos soitosta. Haluaisin todella työskennellä tässä yrityksessä.",
+      "fi_FI": "Terve. Nimeni on Mika. Kiitos soitosta. Haluaisin todella työskennellä tässä yrityksessä.",
       "en_UK": "Hello. My name is Mike and I am glad you called me because I really want to work for this company.",
       "en_US": "Hello. My name is Mike and I am glad you called me because I really want to work for this company.",
       "sv_SE": "",
@@ -124,7 +124,7 @@
       "de": ""
     },
     {
-      "fi_FI": "Tulin tänne koska luulen, että minulla on ominaisuudet jota te olette hakemassa. ",
+      "fi_FI": "Tulin tänne koska luulen, että minulla on ominaisuudet, joita te olette hakemassa. ",
       "en_UK": "I am here because I think I have the profile you are looking for.",
       "en_US": "I am here because I think I have the profile you are looking for.",
       "sv_SE": "",
@@ -156,9 +156,9 @@
       "de": ""
     },
     {
-      "fi_FI": "Anteeksi, en ymmärrä. Voisitko sano sen uudelleen?",
-      "en_UK": "Could you please repeat the question and speak a little bit harder?",
-      "en_US": "Could you please repeat the question and speak a little bit harder?",
+      "fi_FI": "Anteeksi, en ymmärrä. Voisitko sanoa sen uudelleen?",
+      "en_UK": "Sorry i did not understood that. Can you say it again?",
+      "en_US": "Sorry i did not understood that. Can you say it again?",
       "sv_SE": "",
       "fr_FR": "",
       "de": ""
@@ -241,8 +241,8 @@
   "travelling": [
     {
       "fi_FI": "Milloin lentoni lähtee?",
-      "en_UK": "What time is my flight?",
-      "en_US": "What time is my flight?",
+      "en_UK": "When my flight starts?",
+      "en_US": "When my flight starts?",
       "sv_SE": "",
       "fr_FR": "",
       "de": ""
@@ -273,16 +273,16 @@
     },
     {
       "fi_FI": "Tiedätkö missä tämä hotelli sijaitsee?",
-      "en_UK": "Do you know where this hotel is?",
-      "en_US": "Do you know where this hotel is?",
+      "en_UK": "Do you know where this hotel is located?",
+      "en_US": "Do you know where this hotel is located?",
       "sv_SE": "",
       "fr_FR": "",
       "de": ""
     },
     {
       "fi_FI": "Kuinka monta sänkyä huoneessa on?",
-      "en_UK": "How many bed are in the room?",
-      "en_US": "How many bed are in the room?",
+      "en_UK": "How many beds are in the room?",
+      "en_US": "How many beds are in the room?",
       "sv_SE": "",
       "fr_FR": "",
       "de": ""

@@ -168,7 +168,7 @@ class RecordButtonView: UIView {
         textLayer.font = FONTAvenirNextFamily.Regular.CTFont(size: 8)
         textLayer.fontSize = 14
         
-        textLayer.isWrapped = true
+        textLayer.isWrapped = false
         textLayer.truncationMode = .none
         
         textLayer.alignmentMode = .center

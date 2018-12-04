@@ -22,6 +22,7 @@
 		553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C421A8388400C4E6B9 /* SentenceCategory.swift */; };
 		553414C821A839D300C4E6B9 /* SentenceCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553414C621A839D300C4E6B9 /* SentenceCategoryCell.swift */; };
 		553414C921A839D300C4E6B9 /* SentenceCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 553414C721A839D300C4E6B9 /* SentenceCategoryCell.xib */; };
+		5537737A21B6A68C0040CC08 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5537737921B6A68C0040CC08 /* CounterView.swift */; };
 		554858CF21A9147B00FFEA30 /* LanguageListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554858CE21A9147B00FFEA30 /* LanguageListVC.swift */; };
 		554858D121A9235200FFEA30 /* LangTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554858D021A9235200FFEA30 /* LangTableViewCell.swift */; };
 		5548C88121A51A98007EA0CB /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5548C88021A51A98007EA0CB /* MainVC.swift */; };
@@ -80,6 +81,7 @@
 		553414C421A8388400C4E6B9 /* SentenceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategory.swift; sourceTree = "<group>"; };
 		553414C621A839D300C4E6B9 /* SentenceCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentenceCategoryCell.swift; sourceTree = "<group>"; };
 		553414C721A839D300C4E6B9 /* SentenceCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SentenceCategoryCell.xib; sourceTree = "<group>"; };
+		5537737921B6A68C0040CC08 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		554858CE21A9147B00FFEA30 /* LanguageListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageListVC.swift; sourceTree = "<group>"; };
 		554858D021A9235200FFEA30 /* LangTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangTableViewCell.swift; sourceTree = "<group>"; };
 		5548C88021A51A98007EA0CB /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				551BD75A21AA70FC0022275D /* RoundedShadowButton.swift */,
+				5537737921B6A68C0040CC08 /* CounterView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				5548C88321A522A9007EA0CB /* UIApplication+Ext.swift in Sources */,
 				5584D6B12194009B005150EC /* Constants.swift in Sources */,
 				5511DB9121A2FD3B0028F219 /* LanguageService.swift in Sources */,
+				5537737A21B6A68C0040CC08 /* CounterView.swift in Sources */,
 				55EB2DF521A67F9500D41A01 /* MainStatsView.swift in Sources */,
 				553414C521A8388400C4E6B9 /* SentenceCategory.swift in Sources */,
 				55EB2DF321A6725C00D41A01 /* RoundedView.swift in Sources */,
